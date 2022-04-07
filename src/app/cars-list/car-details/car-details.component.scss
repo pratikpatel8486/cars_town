@@ -1,0 +1,236 @@
+.sub-head {
+    padding: 2rem 0;
+    .inner_head {
+        margin: 0;
+        font-weight: 600;
+        font-size: 1.5rem;
+        text-transform: capitalize;
+    }
+    p {
+        color: #A9A8A8;
+        margin: 0;
+        width: 100%;
+    }
+    h4 {
+        margin: 0.5rem 0 0;
+        color: #F7B317;
+        padding: 0.5rem 0;
+        border-top: 1px solid #E8E5E5;
+    }
+}
+.car-item {
+    width: 100%;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 0 0 1rem 0;
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+    transform: scale(1);
+    &:hover, &:focus {
+        box-shadow: 0.1rem 0.1rem 0.7rem hsl(0deg 0% 0% / 20%);
+        transition: all 0.3s ease;
+        transform: scale(1.02);
+        .card-body {
+            background: #f4f4f4;
+            transition: all 0.3s ease;
+        }
+    }
+    .card-image {
+        width: 100%;
+    }
+    .card-body {
+        width: 100%;
+        display: inline-block;
+        padding: 0 1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        .price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #E3E3E3;
+            padding: 0.6rem 0;
+            h3 {
+                color: #F7B317;
+                font-size: 1.3rem;
+                font-weight: 500;
+                margin: 0;
+                line-height: normal;
+            }
+            .card-icon {
+                display: flex;
+                align-items: center;
+                a {
+                    border-radius: 100px;
+                    width: 2rem;
+                    height: 2rem;
+                    display: flex;
+                    align-items: center;
+                    margin: 0 0.5rem;
+                    padding: 0.5rem;
+                    color: #000;
+                    transition: all 0.3s ease;
+                    &.whatsapp_icon {
+                        background: #25D366;
+                    }
+                    &.email_icon {
+                        background: #F7B317;
+                    }
+                    &:hover, &:focus {
+                        background: #000;
+                        color: #fff;
+                        transition: all 0.3s ease;
+                    }
+                }
+            }
+        }
+        > h3 {
+            color: #000;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0.7rem 0;
+        }
+        .card-info {
+            list-style: none;
+            padding: 0;
+            margin: 0 -0.5rem 0.7rem;
+            width: calc(100% + 1rem);
+            display: flex;
+            align-items: baseline;
+            li {
+                width: 25%;
+                padding: 0 0.5rem;
+                border-right: 1px solid #E3E3E3;
+                &:last-child {
+                    border-right: 0;
+                }
+                p {
+                    margin: 0;
+                    color: #7B7B7B;
+                    font-size: 1rem;
+                }
+                h4 {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    color: #000;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+.car-details {
+    ul {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        li {
+            border: 1px solid #A9A8A8;
+            width: calc(33.33% - 1rem);
+            margin: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0.3rem 0.5rem;
+            line-height: normal;
+            span {
+                color: #7B7B7B;
+            }
+            h6 {
+                margin: 0.2rem 0 0;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+        }
+    }
+}
+.car-action {
+    padding-left: 1.5rem;
+    a {
+        margin: 0.5rem 0;
+        border: 1px solid;
+        border-radius: 100px;
+        padding: 0.4rem 0.5rem 0.4rem 2rem;
+        text-align: center;
+        width: 100%;
+        font-weight: 500;
+        max-width: 200px;
+        position: relative;
+        transition: all 0.3s ease;
+        span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            border-radius: 100px;
+            width: 2.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg {
+                width: 55%;
+                height: 55%;
+                position: relative;
+            }
+        }
+        &.call_action {
+            border-color: #F7B317;
+            span {
+                background: #F7B317;
+            }
+            &:hover, &:focus {
+                background: #F7B317;
+                color: #000;
+                box-shadow: none;
+                outline: none;
+                transition: all 0.3s ease;
+            }
+        }
+        &.whatsapp_action {
+            border-color: #25D366;
+            span {
+                background: #25D366;
+            }
+            &:hover, &:focus {
+                background: #25D366;
+                color: #000;
+                box-shadow: none;
+                outline: none;
+                transition: all 0.3s ease;
+            }
+        }
+    }
+}
+.car-specf {
+    padding: 3.5rem 0;
+    > h3 {
+        text-align: center;
+        width: 100%;
+        display: inline-block;
+        margin: 0 0 1.5rem;
+        font-weight: 700;
+    }
+    > ul {
+        li {
+            border: 1px solid #A9A8A8;
+            width: calc(20% - 1rem);
+            margin: 0.5rem 0.5rem;
+            padding: 0.8rem 0.8rem;
+            h6 {
+                margin: 0.4rem 0 0;
+            }
+        }
+    }
+} 
+.car-overview {
+    position: sticky;
+    top: 0;
+    transition: all 0.3s ease;
+    background: #fff;
+    z-index: 999;
+}

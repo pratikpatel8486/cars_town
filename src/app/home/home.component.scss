@@ -1,0 +1,279 @@
+.hero-slider {
+    height: calc(100vh - 100px);
+    background: url(../../assets/images/banner_01.jpg) no-repeat center / cover;
+    .container {
+        height: 100%;
+        .floating-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            flex-direction: column;
+            h1 {
+                color: #fff;
+                margin-bottom: 3rem;
+                font-weight: 400;
+                b {
+                    font-weight: 700;
+                }
+            }
+            form {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #fff;
+                border-radius: 100px;
+                overflow: hidden;
+                width: 100%;
+                box-shadow: 3px 6px 10px rgb(0 0 0 / 25%);
+                .form-group {
+                    flex: 1;
+                    padding: 0;
+                    height: 100%;
+                    ng-select2 {
+                        width: 100%;
+                        height: 100%;
+                        display: inline-block;
+                        position: relative;
+                        ::ng-deep {
+                            .select2.select2-container {
+                                width: 100% !important;
+                                height: 100%;
+                                &.select2-container--open {
+                                    > .selection {
+                                        > .select2-selection {
+                                            .select2-selection__arrow {
+                                                b {
+                                                    border-color: transparent transparent #F7B317 transparent;
+                                                    border-width: 0 7px 8px 7px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                &::after {
+                                    content: "";
+                                    background: #E3E3E3;
+                                    width: 1px;
+                                    height: 60%;
+                                    position: absolute;
+                                    right: 0;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                }
+                                > .selection {
+                                    > .select2-selection {
+                                        height: 100%;
+                                        border: 0;
+                                        padding: 0.5rem 1rem;
+                                        align-items: center;
+                                        display: flex;
+                                        &:hover, &:focus {
+                                            border: none;
+                                            outline: none;
+                                            box-shadow: none;
+                                        }
+                                        .select2-selection__arrow {
+                                            top: 50%;
+                                            transform: translateY(-50%);
+                                            right: 0.5rem;
+                                            height: auto;
+                                            b {
+                                                border-color: #F7B317 transparent transparent transparent;
+                                                border-width: 8px 7px 0 7px;
+                                            }
+                                        }                       
+                                    }   
+                                }
+                            }
+                        }
+                    }
+                }
+                button.btn.btn-primary {
+                    width: auto;
+                    border-radius: 0;
+                    background: #F7B317;
+                    border: none;
+                    color: #000;
+                    padding: 0.8rem 1.2rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.3s ease;
+                    svg {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
+                    &:hover, &:focus {
+                        background: #000;
+                        color: #F7B317;
+                        transition: all 0.3s ease;
+                    }
+                }
+            }
+        }
+    }
+}
+.accelerate-main {
+    padding: 80px 0;
+    width: 100%;
+    .section-header {
+        color: #000000;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        b {
+            font-weight: 700;
+            color: #F7B317;
+        }
+    }
+    .brand-list {
+        width: 100%;
+        display: inline-block;
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            li {
+                width: calc(16.6% - 2rem);
+                margin: 1rem;
+                display: inline-block;
+                a {
+                    display: inline-flex;
+                    width: 100%;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 1.5rem 1rem;
+                    border: 1px solid #E3E3E3;
+                    color: #000;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    border-radius: 20px;
+                    height: 100%;
+                    text-decoration: none;
+                    transition: all 0.2s ease-out;
+                    &.view-all {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #F7B317;
+                        border-color: #F7B317;
+                        span {
+                            white-space: pre-wrap;
+                            word-break: break-word;
+                            font-size: 1.2rem;
+                            width: 6ch;
+                        }
+                        &:hover, &:focus {
+                            background: #F7B317;
+                            color: #fff;
+                        }
+                    }
+                    &:hover, &:focus {
+                        background: #E3E3E3;
+                        box-shadow: 0.15rem 0.15rem 0.5rem 0.1rem hsl(0deg 0% 0% / 20%);
+                        transition: all 0.2s ease-out;
+                        transform: scale(1.03);
+                    }
+                    .brand-img {
+                        height: 7rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-bottom: 1rem;
+                        img {
+                            max-width: 100%;
+                            max-height: 100%;
+                        }
+                    }
+                    span {
+                        text-decoration: none;
+                        width: 100%;
+                        overflow: hidden;
+                        white-space: pre;
+                        text-align: center;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+    }
+}
+.collection-main {
+    background: #000;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    .lestest-collection {
+        padding: 3rem 0;
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        .collection-right {
+            .card-slider {
+                width: 10%;
+                background: #fff;
+                border-radius: 10px;
+                overflow: hidden;
+                .card-image {
+                    width: 100%;
+                }
+                .card-body {
+                    width: 100%;
+                    display: inline-block;
+                    .price {
+                        display: flex;
+                        align-items: center;
+                        h3 {
+                            color: #F7B317;
+                            font-size: 1.5rem;
+                            font-weight: 500;
+                        }
+                    }
+                    > h3 {
+                        color: #000;
+                        font-size: 1.3rem;
+                        font-weight: 400;
+                    }
+                    .card-info {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        width: 100%;
+                        display: flex;
+                        align-items: baseline;
+                        li {
+                            width: 25%;
+                            p {
+                                margin: 0;
+                                color: #7B7B7B;
+                            }
+                            h4 {
+                                font-size: 1.1rem;
+                                font-weight: 400;
+                                color: #000;
+                            }
+                        }
+                    }
+                }
+            }
+            // > .slick-wrapper {
+            //     > ngx-slick-carousel {
+            //         > .slick-list {
+            //             > .slick-track {
+            //                 > .slick-slide {
+                               
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
+        }
+    }
+}

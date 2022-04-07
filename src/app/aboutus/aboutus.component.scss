@@ -1,0 +1,14 @@
+.sub-head {
+    padding: 2rem 0;
+    .details_head {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .inner_head {
+        margin: 0;
+        font-weight: 600;
+        font-size: 1.5rem;
+        text-transform: capitalize;
+    }
+}

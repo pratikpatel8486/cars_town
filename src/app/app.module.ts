@@ -12,6 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelect2Module } from 'ng-select2';
 import { BrandsComponent } from './brands/brands.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { LoginComponent } from './Admin/login/login.component';
+import { CarListComponent } from './Admin/car-list/car-list.component';
+import { AddCarsComponent } from './Admin/add-cars/add-cars.component';
 
 
 
@@ -23,7 +26,10 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     ContactusComponent,
     CarsListComponent,
     CarDetailsComponent,
-    BrandsComponent
+    BrandsComponent,
+    LoginComponent,
+    CarListComponent,
+    AddCarsComponent
   ],
   imports: [
     BrowserModule,

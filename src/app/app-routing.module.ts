@@ -6,6 +6,9 @@ import { HomeComponent } from './home/home.component';
 import { BrandsComponent } from './brands/brands.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { LoginComponent } from './Admin/login/login.component';
+import { CarListComponent } from './Admin/car-list/car-list.component';
+import { AddCarsComponent } from './Admin/add-cars/add-cars.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -14,6 +17,9 @@ const routes: Routes = [
   {path: 'carList', component: CarsListComponent}, 
   {path: 'carDetails', component: CarDetailsComponent}, 
   {path: 'brands', component: BrandsComponent}, 
+  {path: 'login', component: LoginComponent},
+  {path: 'car-list', component: CarListComponent},
+  {path: 'add-cars', component: AddCarsComponent},
 ];
 
 @NgModule({

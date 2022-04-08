@@ -16,6 +16,10 @@ import { LoginComponent } from './Admin/login/login.component';
 import { CarListComponent } from './Admin/car-list/car-list.component';
 import { AddCarsComponent } from './Admin/add-cars/add-cars.component';
 
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -36,7 +40,11 @@ import { AddCarsComponent } from './Admin/add-cars/add-cars.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgSelect2Module,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatIconModule,
+    NgxMatSelectSearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 .subhero-slider {
     background: url(../../assets/images/banner_01.jpg) no-repeat fixed center / cover;
-    padding: 5rem;
+    padding: 5rem 1rem 13rem;
     text-align: center;
     position: relative;
     &::before {
@@ -38,6 +38,39 @@
                 color: #F7B317;
                 &::before {
                     color: #fff;
+                }
+            }
+        }
+    }
+}
+.about-main {
+    margin: -8rem 0rem 3rem;
+    position: relative;
+    .container {
+        > .row {
+            background: #fff;
+            box-shadow: 0.1rem 0.1rem 0.5rem hsl(0deg 0% 0% / 20%);
+            padding: 3rem;
+            border-radius: 15px;
+            .cars-title {
+                margin: 0.5rem 0 3rem;
+                .cars-title-wrap {
+                    font-weight: 600;
+                    color: #000;
+                    position: relative;
+                    margin: 0;
+                    padding: 0 0 1rem;
+                    text-transform: capitalize;
+                    &::before {
+                        content: "";
+                        height: 0.5rem;
+                        width: 30%;
+                        background: #F7B317;
+                        position: absolute;
+                        left: 50%;
+                        bottom: 0;
+                        transform: translateX(-50%);
+                    }    
                 }
             }
         }

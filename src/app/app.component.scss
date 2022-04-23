@@ -70,6 +70,59 @@ header {
                 }
             }
         }
+        .navbar-toggler {
+            padding: 0;
+            &:hover, &:focus {
+                box-shadow: none;
+            }
+            .hamburger-lines {
+                height: 1.6rem;
+                width: 1.8rem;
+                z-index: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                .line {
+                    display: block;
+                    height: 4px;
+                    width: 100%;
+                    border-radius: 10px;
+                    background: #000;
+                }
+                .line1 {
+                    transform-origin: -10% 0%;
+                    transform: rotate(45deg);
+                    transition: transform 0.4s ease-in-out;
+                }
+                .line2 {
+                    transform: scaleY(0);
+                    transition: transform 0.2s ease-in-out;
+                }
+                .line3 {
+                    transform-origin: -5% 100%;
+                    transform: rotate(-45deg);
+                    transition: transform 0.4s ease-in-out;
+                }
+            }
+            &.collapsed {
+                .hamburger-lines {
+                    .line1 {
+                        transform-origin: 0% 0%;
+                        transform: rotate(0deg);
+                        transition: transform 0.4s ease-in-out;
+                    }
+                    .line2 {
+                        transform: scaleY(1);
+                        transition: transform 0.2s ease-in-out;
+                    }
+                    .line3 {
+                        transform-origin: 0% 100%;
+                        transform: rotate(0deg);
+                        transition: transform 0.4s ease-in-out;
+                    }
+                }
+            }
+        }
     }
 }
 .main-footer {
@@ -171,6 +224,7 @@ header {
     align-items: center;
     justify-content: center;
     box-shadow: 0.1rem 0.1rem 0.5rem rgba(0,0,0,.2)!important;
+    z-index: 999;
     &:hover, &:focus {
         background: #000;
         color: #F7B317;
@@ -201,6 +255,7 @@ header {
     animation: slide-fwd-top 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     box-shadow: 0.1rem 0.1rem 0.5rem rgba(0,0,0,.2)!important;
     transition: all 0.3s ease;
+    z-index: 999;
     svg {
         margin-left: 0.4rem;
         width: 1.5rem;
@@ -236,3 +291,94 @@ header {
     }
 }
 
+@media only screen and (max-width: 991px) {
+    header {
+        .navbar {
+            padding: 0.5rem 0rem;
+            .navbar-toggler {
+                border: none;
+                color: #F7B317;
+            }
+            .navbar-collapse {
+                position: absolute;
+                left: 0;
+                top: 80px;
+                width: 100%;
+                background: #fff;
+                padding: 1rem;
+                border-top: 1px solid #e1e1e1;
+                .navbar-nav {
+                    margin: 0 !important;
+                    .nav-item {
+                        width: 100%;
+                        display: inline-block;
+                        a {
+                            padding: 1rem;
+                            &::after {
+                                width: 100%;
+                                height: 1px;
+                                top: auto;
+                                bottom: 0;
+                            }
+                        }
+                        .call-action {
+                            margin-top: 1rem;
+                            a {
+                                padding: 0.2rem;
+                                margin: 0 0.5rem;
+                                width: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .sub-footer {
+        flex-wrap: wrap;
+        padding: 0.5rem 0;
+        .copy-right {
+            p {
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 0 0.5rem;
+            }
+        }
+        .foote-menu {
+            order: -1;
+            padding-bottom: 0.5rem;
+        }
+    }
+}
+@media only screen and (max-width: 767px) {
+    .sub-footer {
+        .quick_enquiry {
+            font-size: 0;
+            padding: 0.5rem;
+            bottom: 0.5rem;
+            svg {
+                margin-left: 0;
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+        .scroll-top {
+            padding: 0.5rem;
+            bottom: 0.5rem;
+            svg {
+                margin-left: 0;
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+        .foote-menu {
+            ul {
+                li {
+                    a {
+                        padding: 0.2rem 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+}

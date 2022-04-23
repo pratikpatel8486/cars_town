@@ -30,26 +30,52 @@
                     flex: 1;
                     padding: 0;
                     height: 100%;
-                    ng-select2 {
+                    mat-form-field {
                         width: 100%;
                         height: 100%;
                         display: inline-block;
                         position: relative;
+                        float: left;
                         ::ng-deep {
-                            .select2.select2-container {
+                            .mat-form-field-wrapper {
                                 width: 100% !important;
                                 height: 100%;
-                                &.select2-container--open {
-                                    > .selection {
-                                        > .select2-selection {
-                                            .select2-selection__arrow {
-                                                b {
-                                                    border-color: transparent transparent #F7B317 transparent;
-                                                    border-width: 0 7px 8px 7px;
+                                padding: 0;
+                                .mat-form-field-flex {
+                                    height: 100%;
+                                    .mat-form-field-infix {
+                                        margin: 0;
+                                        padding: 0;
+                                        height: 100%;
+                                        border: 0;
+                                        > .mat-select {
+                                            height: 100%;
+                                            padding: 0.5rem 0.8rem;
+                                            .mat-select-trigger {
+                                                height: 100%;
+                                                .mat-select-value {
+                                                    vertical-align: middle;
                                                 }
                                             }
                                         }
+                                        .mat-form-field-label-wrapper {
+                                            padding: 0;
+                                            top: 0;
+                                            height: 100%;
+                                            .mat-form-field-label {
+                                                height: 100%;
+                                                top: 0rem;
+                                                vertical-align: middle;
+                                                display: inline-flex;
+                                                align-items: center;
+                                                left: 1rem;
+                                                width: calc(100% - 2rem);
+                                            }
+                                        }
                                     }
+                                }
+                                .mat-form-field-underline {
+                                    display: none;
                                 }
                                 &::after {
                                     content: "";
@@ -61,35 +87,22 @@
                                     top: 50%;
                                     transform: translateY(-50%);
                                 }
-                                > .selection {
-                                    > .select2-selection {
-                                        height: 100%;
-                                        border: 0;
-                                        padding: 0.5rem 1rem;
-                                        align-items: center;
-                                        display: flex;
-                                        &:hover, &:focus {
-                                            border: none;
-                                            outline: none;
-                                            box-shadow: none;
+                            }
+                        }
+                        &.mat-form-field-can-float.mat-form-field-should-float, &.mat-form-field-can-float {
+                            ::ng-deep {
+                                .mat-form-field-wrapper {
+                                    .mat-form-field-label-wrapper {
+                                        .mat-form-field-label {
+                                            top: -1rem;
                                         }
-                                        .select2-selection__arrow {
-                                            top: 50%;
-                                            transform: translateY(-50%);
-                                            right: 0.5rem;
-                                            height: auto;
-                                            b {
-                                                border-color: #F7B317 transparent transparent transparent;
-                                                border-width: 8px 7px 0 7px;
-                                            }
-                                        }                       
-                                    }   
+                                    }
                                 }
                             }
                         }
                     }
                 }
-                button.btn.btn-primary {
+                .btn.btn-primary {
                     width: auto;
                     border-radius: 0;
                     background: #F7B317;
@@ -100,6 +113,7 @@
                     align-items: center;
                     justify-content: center;
                     transition: all 0.3s ease;
+                    font-size: 0;
                     svg {
                         width: 1.5rem;
                         height: 1.5rem;
@@ -274,6 +288,72 @@
             //         }
             //     }
             // }
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .accelerate-main {
+        padding: 40px 0;
+        .container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .section-header {
+            margin-bottom: 1rem;
+        }
+        .brand-list {
+            ul {
+                li {
+                    width: calc(50% - 1rem);
+                    margin: 0.5rem;
+                    a {
+                        .brand-img {
+                            height: 5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .hero-slider {
+        .container {
+            .floating-form {
+                h1 {
+                    text-align: center;
+                    margin-bottom: 2rem;
+                }
+                form {
+                    border-radius: 5px;
+                    flex-wrap: wrap;
+                    background: transparent;
+                    box-shadow: none;
+                    .form-group {
+                        padding: 0;
+                        height: auto;
+                        background: #fff;
+                        margin: 0.4rem 0;
+                        border-radius: 5px;
+                        mat-form-field {
+                            ::ng-deep {
+                                .mat-form-field-wrapper {
+                                    height: 45px;
+                                }
+                            }
+                        }
+                    }
+                    button.btn.btn-primary {
+                        font-size: 1rem;
+                        width: 100%;
+                        padding: 0.5rem 1.2rem;
+                        margin-top: 0.5rem;
+                        svg {
+                            display: none;
+                        }
+
+                    }
+                }
+            }
         }
     }
 }

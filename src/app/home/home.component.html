@@ -5,88 +5,71 @@
             <form class="row">
                 <div class="form-group">
                     <!-- <h3>Single selection</h3> -->
-                    <p>
                       <mat-form-field>
                         <mat-select placeholder="Car selection" #singleSelect>
-                          <mat-option>
+                            <mat-option>
+                                <ngx-mat-select-search ></ngx-mat-select-search>
+                            </mat-option>
+                            <mat-option value="101">
+                                car1
+                            </mat-option>
+                            <mat-option value="102">
+                                car2
+                            </mat-option>
+                        </mat-select>
+                      </mat-form-field>                    
+                </div>
+                <div class="form-group">
+                    <mat-form-field>
+                        <mat-select placeholder="Car selection" #singleSelect>
+                        <mat-option>
                             <ngx-mat-select-search ></ngx-mat-select-search>
-                          </mat-option>
-                          <mat-option >
+                        </mat-option>
+                        <mat-option >
                             car1
                         </mat-option>
                         <mat-option >
                             car2
                         </mat-option>
                         </mat-select>
-                      </mat-form-field>
-                    </p>
-                    <p>
-                      <!-- Selected Bank: {{bankCtrl.value?.name}} -->
-                    </p>
-                    
+                    </mat-form-field>
+                    <!-- Selected Bank: {{bankCtrl.value?.name}} -->
                 </div>
                 <div class="form-group">
-                    <p>
-                        <mat-form-field>
-                          <mat-select placeholder="Car selection" #singleSelect>
-                            <mat-option>
-                              <ngx-mat-select-search ></ngx-mat-select-search>
-                            </mat-option>
-                            <mat-option >
-                                car1
-                            </mat-option>
-                            <mat-option >
-                                car2
-                            </mat-option>
-                          </mat-select>
-                        </mat-form-field>
-                      </p>
-                      <p>
-                        <!-- Selected Bank: {{bankCtrl.value?.name}} -->
-                      </p>
+                    <mat-form-field>
+                        <mat-select placeholder="Car selection" #singleSelect>
+                        <mat-option>
+                            <ngx-mat-select-search ></ngx-mat-select-search>
+                        </mat-option>
+                        <mat-option >
+                            car1
+                        </mat-option>
+                        <mat-option >
+                            car2
+                        </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!-- Selected Bank: {{bankCtrl.value?.name}} -->
                 </div>
                 <div class="form-group">
-                    <p>
-                        <mat-form-field>
-                          <mat-select placeholder="Car selection" #singleSelect>
-                            <mat-option>
-                              <ngx-mat-select-search ></ngx-mat-select-search>
-                            </mat-option>
-                            <mat-option >
-                                car1
-                            </mat-option>
-                            <mat-option >
-                                car2
-                            </mat-option>
-                          </mat-select>
-                        </mat-form-field>
-                      </p>
-                      <p>
-                        <!-- Selected Bank: {{bankCtrl.value?.name}} -->
-                      </p>
-                </div>
-                <div class="form-group">
-                    <p>
-                        <mat-form-field>
-                          <mat-select placeholder="Car selection" #singleSelect>
-                            <mat-option>
-                              <ngx-mat-select-search ></ngx-mat-select-search>
-                            </mat-option>
-                            <mat-option >
-                                car1
-                            </mat-option>
-                            <mat-option >
-                                car2
-                            </mat-option>
-                          </mat-select>
-                        </mat-form-field>
-                      </p>
-                      <p>
-                        <!-- Selected Bank: {{bankCtrl.value?.name}} -->
-                      </p>
+                    <mat-form-field>
+                        <mat-select placeholder="Car selection" #singleSelect>
+                        <mat-option>
+                            <ngx-mat-select-search ></ngx-mat-select-search>
+                        </mat-option>
+                        <mat-option >
+                            car1
+                        </mat-option>
+                        <mat-option >
+                            car2
+                        </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!-- Selected Bank: {{bankCtrl.value?.name}} -->
                 </div>
                 <button type="submit" class="btn btn-primary">
                     <svg id="search-alt3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon line" width="48" height="48"><path id="primary" d="M17,10a7,7,0,1,1-7-7A7,7,0,0,1,17,10Zm3,10L15,15" stroke="currentColor" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><line id="primary-2" data-name="primary" x1="20.5" y1="20.5" x2="17" y2="17" stroke="currentColor" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line></svg>
+                    Search
                 </button>
             </form>
         </div>

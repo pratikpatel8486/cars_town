@@ -11,7 +11,6 @@ import { CarDetailsComponent } from './cars-list/car-details/car-details.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelect2Module } from 'ng-select2';
 import { BrandsComponent } from './brands/brands.component';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { LoginComponent } from './Admin/login/login.component';
 import { CarListComponent } from './Admin/car-list/car-list.component';
 import { AddCarsComponent } from './Admin/add-cars/add-cars.component';
@@ -20,6 +19,7 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -40,11 +40,11 @@ import { MatIconModule } from '@angular/material/icon';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgSelect2Module,
-    SlickCarouselModule,
     MatSelectModule,
     MatFormFieldModule,
     MatIconModule,
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

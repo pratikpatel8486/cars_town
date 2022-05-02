@@ -76,3 +76,87 @@
         }
     }
 }
+
+.destination_img {
+    width: 50%;
+    border-radius: 5px;
+    max-height: 13rem;
+    overflow: hidden;
+    position: relative;
+    owl-carousel-o {
+        ::ng-deep {
+            .owl-carousel {
+                display: inline-block;
+                float: left;
+                height: 100%;
+                .owl-stage-outer {
+                    display: inline-block;
+                    float: left;
+                    height: 100%;
+                    min-height: 10rem;
+                    owl-stage {
+                        height: 100%;
+                        > div {
+                            height: 100%;
+                            .owl-stage {
+                                height: 100%;
+                                .owl-item {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    height: 100%;
+                                    img {
+                                        min-width: 100%;
+                                        min-height: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .owl-nav {
+                    margin: 0;
+                    .owl-prev,
+                    .owl-next {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        margin: 0;
+                        padding: 0;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        background: #132f4e;
+                        color: #7cd348;
+                        border-radius: 100px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: all 0.3s ease;
+                        &:hover,
+                        &:focus {
+                            transition: all 0.3s ease;
+                            color: #132f4e;
+                            background: #7cd348;
+                        }
+                    }
+                    .owl-prev {
+                        left: 0.5rem;
+                        padding-right: 0.2rem;
+                        &::before {
+                            content: "\f053";
+                            font: normal normal normal 14px/1 FontAwesome;
+                        }
+                    }
+                    .owl-next {
+                        right: 0.5rem;
+                        padding-left: 0.2rem;
+                        &::before {
+                            content: "\f054";
+                            font: normal normal normal 14px/1 FontAwesome;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

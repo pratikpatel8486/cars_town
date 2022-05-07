@@ -188,37 +188,44 @@
         </div>
         <div class="collection-right">
             <div class="slick-wrapper">
-                <!-- <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
-                  <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-                    <div class="card-slider">
-                        <div class="card-image">
-                            <div class="slick-wrapper">
-                                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
-                                  <div  ngxSlickItem *ngFor="let slide of slides" class="slide">
-                                      <img src="../../assets/images/car_item_01.jpg" alt="Car item">
-                                  </div>
-                                </ngx-slick-carousel>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="price">
-                                <h3>$8,25,000</h3>
-                                <div class="card-icon">
-                                    <i class="fas fa-comment"></i>
-                                    <i class="fas fa-phone-alt"></i>
+                <div class="destination_img">
+                    <owl-carousel-o [options]="latestCollection">
+                      <ng-container *ngFor="let data of ['1','2','3','4','5'];">
+                        <ng-template carouselSlide [id]="data">
+                            <div class="card-slider">
+                                <div class="card-image">
+                                    <div class="slick-wrapper">
+                                        <owl-carousel-o [options]="customOptions">
+                                            <ng-container *ngFor="let data of ['1','2','3','4','5'];">
+                                              <ng-template carouselSlide [id]="data">
+                                                <img src="assets/images/car_item_01.jpg" alt="car"
+                                                      title="car">
+                                                </ng-template>
+                                            </ng-container>
+                                        </owl-carousel-o>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="price">
+                                        <h3>$8,25,000</h3>
+                                        <div class="card-icon">
+                                            <i class="fas fa-comment"></i>
+                                            <i class="fas fa-phone-alt"></i>
+                                        </div>
+                                    </div>
+                                    <h3>Honda City 1.5 SV MT (I-DTEC)</h3>
+                                    <ul class="card-info">
+                                        <li><p>Reg.Year</p><h4>2018</h4></li>
+                                        <li><p>KMS</p><h4>60,000</h4></li>
+                                        <li><p>Fuel Type</p><h4>DIESEL</h4></li>
+                                        <li><p>Ownership</p><h4>1 ST</h4></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <h3>Honda City 1.5 SV MT (I-DTEC)</h3>
-                            <ul class="card-info">
-                                <li><p>Reg.Year</p><h4>2018</h4></li>
-                                <li><p>KMS</p><h4>60,000</h4></li>
-                                <li><p>Fuel Type</p><h4>DIESEL</h4></li>
-                                <li><p>Ownership</p><h4>1 ST</h4></li>
-                            </ul>
-                        </div>
-                    </div>
-                  </div>
-                </ngx-slick-carousel> -->
+                        </ng-template>
+                      </ng-container>
+                    </owl-carousel-o>
+                </div>
             </div>
         </div>
     </div>

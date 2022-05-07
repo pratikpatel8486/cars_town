@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng-select2';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+
+declare var $: any;
 
 @Component({
   selector: 'app-home',
@@ -13,6 +16,54 @@ export class HomeComponent implements OnInit {
   public car_year: Array<Select2OptionData> = [];
   public options: any;
   // items: any = ['Bold', 'Italic', 'Underline', 'Formats', 'Alignments', 'fontColor']
+  
+  slides = [342, 453, 846, 855, 234, 564, 744, 243];
+
+  // slideConfig = {
+  //   "slidesToShow": 3,
+  //   "slidesToScroll": 1,
+  //   "nextArrow": "<div class='nav-btn next-slide'></div>",
+  //   "prevArrow": "<div class='nav-btn prev-slide'></div>",
+  //   "dots": true,
+  //   "infinite": true,
+  //   "autoplay": true,
+  //   "autoplaySpeed": 2000
+  // };
+
+  latestCollection: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      940: {
+        items: 3
+      }
+    },
+    nav: true
+  };
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: true,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+        0: {
+            items: 1
+        }
+    },
+    nav: true
+  };
  
   constructor() { }
 

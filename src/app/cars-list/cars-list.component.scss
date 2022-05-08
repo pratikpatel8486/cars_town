@@ -82,6 +82,86 @@
     }
     .card-image {
         width: 100%;
+        position: relative;
+        ::ng-deep {
+            > owl-carousel-o {
+                ::ng-deep {
+                    > .owl-carousel {
+                        display: inline-block;
+                        float: left;
+                        height: 100%;
+                        > .owl-stage-outer {
+                            display: inline-block;
+                            float: left;
+                            height: 100%;
+                            min-height: 10rem;
+                            > owl-stage {
+                                height: 100%;
+                                width: 100%;
+                                > div {
+                                    height: 100%;
+                                    width: 100%;
+                                    > .owl-stage {
+                                        height: 100%;
+                                        gap: 0;
+                                        display: flex;
+                                        > .owl-item {
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            height: 100%;
+                                            width: calc(100% - 3rem);
+                                            img {
+                                                min-width: 100%;
+                                                min-height: 100%;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        > .owl-nav {
+                            .owl-prev,
+                            .owl-next {
+                                margin: 0 0.3rem;
+                                padding: 0;
+                                width: 1.7rem;
+                                height: 1.7rem;
+                                border-radius: 100px;
+                                align-items: center;
+                                justify-content: center;
+                                transition: all 0.3s ease;
+                                position: absolute;
+                                filter: none;
+                                &:hover,
+                                &:focus {
+                                    background-color: #fff;
+                                    transition: all 0.3s ease;
+                                }
+                            }
+                            .owl-prev {
+                                background: url(/assets/images/arrow_right.png) no-repeat;
+                                left: 0;
+                                top: 50%;
+                                transform: translateY(-50%) rotateY(180deg);
+                                background-color: #f7b317;
+                                background-size: 35%;
+                                background-position: center;
+                            }
+                            .owl-next {
+                                background: url(/assets/images/arrow_right.png) no-repeat;
+                                right: 0;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                background-color: #f7b317;
+                                background-size: 35%;
+                                background-position: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     .card-body {
         width: 100%;
@@ -200,6 +280,8 @@
         align-items: center;
         justify-content: center;
         &:hover, &:focus {
+            outline: none;
+            box-shadow: none;
             color: #000;
             transition: all 0.3s ease;
             transform: rotate(180deg);

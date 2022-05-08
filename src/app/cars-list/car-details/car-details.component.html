@@ -61,7 +61,16 @@
         </div>
     </div>
 </div>
-<img src="../../../assets/images/gallary_slide.png" alt="">
+<div class="cars_slider">
+    <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let data of ['1','2','3','4','5'];">
+          <ng-template carouselSlide [id]="data">
+            <img src="assets/images/cars_details_02.jpg" alt="car"
+                  title="car">
+            </ng-template>
+        </ng-container>
+    </owl-carousel-o>
+</div>
 <div class="container">
     <div class="car-details car-specf">
         <h3>Car Specifications</h3>
@@ -122,7 +131,13 @@
             <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                 <div class="car-item">
                     <div class="card-image">
-                        <img src="../../assets/images/car_item_01.jpg" alt="Car item">
+                        <owl-carousel-o [options]="latestCollection">
+                            <ng-container *ngFor="let data of ['1','2','3','4','5'];">
+                                <ng-template carouselSlide [id]="data">
+                                    <img src="assets/images/cars_details_03.jpg" alt="car" title="car">
+                                </ng-template>
+                            </ng-container>
+                        </owl-carousel-o>
                     </div>
                     <a class="card-body" href="javascript:void(0);" routerLink="/carDetails">
                         <div class="price">
@@ -156,8 +171,14 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                 <div class="car-item">
-                    <div class="card-image">
-                        <img src="../../assets/images/car_item_01.jpg" alt="Car item">
+                     <div class="card-image">
+                        <owl-carousel-o [options]="latestCollection">
+                            <ng-container *ngFor="let data of ['1','2','3','4','5'];">
+                                <ng-template carouselSlide [id]="data">
+                                    <img src="assets/images/cars_details_02.jpg" alt="car" title="car">
+                                </ng-template>
+                            </ng-container>
+                        </owl-carousel-o>
                     </div>
                     <a class="card-body" href="javascript:void(0);" routerLink="/carDetails">
                         <div class="price">
@@ -191,8 +212,14 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                 <div class="car-item">
-                    <div class="card-image">
-                        <img src="../../assets/images/car_item_01.jpg" alt="Car item">
+                     <div class="card-image">
+                        <owl-carousel-o [options]="latestCollection">
+                            <ng-container *ngFor="let data of ['1','2','3','4','5'];">
+                                <ng-template carouselSlide [id]="data">
+                                    <img src="assets/images/cars_details_01.jpg" alt="car" title="car">
+                                </ng-template>
+                            </ng-container>
+                        </owl-carousel-o>
                     </div>
                     <a class="card-body" href="javascript:void(0);" routerLink="/carDetails">
                         <div class="price">
@@ -226,8 +253,14 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                 <div class="car-item">
-                    <div class="card-image">
-                        <img src="../../assets/images/car_item_01.jpg" alt="Car item">
+                     <div class="card-image">
+                        <owl-carousel-o [options]="latestCollection">
+                            <ng-container *ngFor="let data of ['1','2','3','4','5'];">
+                                <ng-template carouselSlide [id]="data">
+                                    <img src="assets/images/cars_details_01.jpg" alt="car" title="car">
+                                </ng-template>
+                            </ng-container>
+                        </owl-carousel-o>
                     </div>
                     <a class="card-body" href="javascript:void(0);" routerLink="/carDetails">
                         <div class="price">
@@ -261,8 +294,14 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                 <div class="car-item">
-                    <div class="card-image">
-                        <img src="../../assets/images/car_item_01.jpg" alt="Car item">
+                     <div class="card-image">
+                        <owl-carousel-o [options]="latestCollection">
+                            <ng-container *ngFor="let data of ['1','2','3','4','5'];">
+                                <ng-template carouselSlide [id]="data">
+                                    <img src="assets/images/cars_details_03.jpg" alt="car" title="car">
+                                </ng-template>
+                            </ng-container>
+                        </owl-carousel-o>
                     </div>
                     <a class="card-body" href="javascript:void(0);" routerLink="/carDetails">
                         <div class="price">
@@ -296,8 +335,14 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                 <div class="car-item">
-                    <div class="card-image">
-                        <img src="../../assets/images/car_item_01.jpg" alt="Car item">
+                     <div class="card-image">
+                        <owl-carousel-o [options]="latestCollection">
+                            <ng-container *ngFor="let data of ['1','2','3','4','5'];">
+                                <ng-template carouselSlide [id]="data">
+                                    <img src="assets/images/cars_details_02.jpg" alt="car" title="car">
+                                </ng-template>
+                            </ng-container>
+                        </owl-carousel-o>
                     </div>
                     <a class="card-body" href="javascript:void(0);" routerLink="/carDetails">
                         <div class="price">

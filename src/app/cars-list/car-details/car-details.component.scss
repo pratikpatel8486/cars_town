@@ -23,10 +23,14 @@
     background: #fff;
     border-radius: 15px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin: 0 0 1rem 0;
     border: 1px solid #f0f0f0;
     transition: all 0.3s ease;
     transform: scale(1);
+    height: calc(100% - 1rem);
     &:hover, &:focus {
         box-shadow: 0.1rem 0.1rem 0.7rem hsl(0deg 0% 0% / 20%);
         transition: all 0.3s ease;
@@ -38,10 +42,92 @@
     }
     .card-image {
         width: 100%;
+        display: inline-block;
+        ::ng-deep {
+            > owl-carousel-o {
+                ::ng-deep {
+                    > .owl-carousel {
+                        display: inline-block;
+                        float: left;
+                        height: 100%;
+                        > .owl-stage-outer {
+                            display: inline-block;
+                            float: left;
+                            height: 100%;
+                            min-height: 10rem;
+                            > owl-stage {
+                                height: 100%;
+                                width: 100%;
+                                > div {
+                                    height: 100%;
+                                    width: 100%;
+                                    > .owl-stage {
+                                        height: 100%;
+                                        gap: 0;
+                                        display: flex;
+                                        > .owl-item {
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            height: 100%;
+                                            width: calc(100% - 3rem);
+                                            img {
+                                                min-width: 100%;
+                                                min-height: 100%;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        > .owl-nav {
+                            .owl-prev,
+                            .owl-next {
+                                margin: 0 0.3rem;
+                                padding: 0;
+                                width: 1.7rem;
+                                height: 1.7rem;
+                                border-radius: 100px;
+                                align-items: center;
+                                justify-content: center;
+                                transition: all 0.3s ease;
+                                position: absolute;
+                                filter: none;
+                                &:hover,
+                                &:focus {
+                                    background-color: #fff;
+                                    transition: all 0.3s ease;
+                                }
+                            }
+                            .owl-prev {
+                                background: url(/assets/images/arrow_right.png) no-repeat;
+                                left: 0;
+                                top: 50%;
+                                transform: translateY(-50%) rotateY(180deg);
+                                background-color: #f7b317;
+                                background-size: 35%;
+                                background-position: center;
+                            }
+                            .owl-next {
+                                background: url(/assets/images/arrow_right.png) no-repeat;
+                                right: 0;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                background-color: #f7b317;
+                                background-size: 35%;
+                                background-position: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }   
     }
     .card-body {
         width: 100%;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
         padding: 0 1rem;
         text-decoration: none;
         transition: all 0.3s ease;
@@ -233,4 +319,91 @@
     transition: all 0.3s ease;
     background: #fff;
     z-index: 999;
+}
+.cars_slider {
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    ::ng-deep {
+        > owl-carousel-o {
+            width: 150%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: -25%;
+            ::ng-deep {
+                > .owl-carousel {
+                    display: inline-block;
+                    float: left;
+                    height: 100%;
+                    > .owl-stage-outer {
+                        display: inline-block;
+                        float: left;
+                        height: 100%;
+                        min-height: 10rem;
+                        > owl-stage {
+                            height: 100%;
+                            width: 100%;
+                            > div {
+                                height: 100%;
+                                width: 100%;
+                                > .owl-stage {
+                                    height: 100%;
+                                    > .owl-item {
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        height: 100%;
+                                        padding-right: 1rem;
+                                        img {
+                                            min-width: 100%;
+                                            min-height: 100%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    > .owl-nav {
+                        .owl-prev,
+                        .owl-next {
+                            margin: 0 0.3rem;
+                            padding: 0;
+                            width: 1.7rem;
+                            height: 1.7rem;
+                            border-radius: 100px;
+                            align-items: center;
+                            justify-content: center;
+                            transition: all 0.3s ease;
+                            position: absolute;
+                            filter: none;
+                            &:hover,
+                            &:focus {
+                                background-color: #fff;
+                                transition: all 0.3s ease;
+                            }
+                        }
+                        .owl-prev {
+                            background: url(/assets/images/arrow_right.png) no-repeat;
+                            left: 18%;
+                            top: 50%;
+                            transform: translateY(-50%) rotateY(180deg);
+                            background-color: #f7b317;
+                            background-size: 35%;
+                            background-position: center;
+                        }
+                        .owl-next {
+                            background: url(/assets/images/arrow_right.png) no-repeat;
+                            right: 18%;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            background-color: #f7b317;
+                            background-size: 35%;
+                            background-position: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -70,7 +70,8 @@
                     transition: all 0.3s ease;
                     &:hover, &:focus {
                         cursor: pointer;
-                        background: transparent;
+                        background: #000;
+                        box-shadow: none;
                         color: #F7B317;
                         transition: all 0.3s ease;
                     }

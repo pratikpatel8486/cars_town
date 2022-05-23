@@ -43,6 +43,16 @@
         }
     }
 }
+.add_brand {
+    display: flex;
+    top: -8rem;
+    position: relative;
+    gap: 1rem;
+    button.btn-primary {
+        flex: 1;
+        margin: 0.5rem auto;
+    }
+}
 .add-cars{
     form {
         .row {

@@ -13,6 +13,13 @@
     <div class="container">
         <form>
             <div class="row">
+                <div class="col-12">
+                    <div class="add_brand">
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_brand">Add Brand</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_modal">Add Modal</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_variant">Add Variant</button>
+                    </div>
+                </div>
                 <div class="col-9 px-4">
                     <div class="row gy-2 pb-4">
                         <div class="col-4">
@@ -140,6 +147,7 @@
                     <div class="row">
                         <div class="col-12">
                             drag and drop Multiple images upload
+                            <div (click)="uploadPhoto()">Upload photo</div>
                         </div>
                     </div>
                 </div>
@@ -149,38 +157,100 @@
     </div>
 </section>
 
-<!-- Modal -->
-<div class="modal fade" id="addbrand" tabindex="-1" role="dialog" aria-labelledby="addbrandLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addbrandLabel">Add Brand</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form class="needs-validation" novalidate>
-                <div class="form-row">
-                    <div class="col-12 mb-3">
-                        <label>Brand logo</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="brand_logo">
-                            <label class="custom-file-label" for="brand_logo">Choose Image</label>
+<div class="modal fade" id="add_brand" tabindex="-1" aria-labelledby="add_brandLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-12 mb-3">
+                            <label>Brand logo</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="brand_logo">
+                                <label class="custom-file-label" for="brand_logo">Choose Image</label>
+                            </div>
+                            <div class="invalid-tooltip">Enter brand name</div>
                         </div>
-                        <div class="invalid-tooltip">Enter brand name</div>
+                        <div class="col-12 mb-3">
+                            <label>Brand name</label>
+                            <input type="text" class="form-control" placeholder="Brand name" required>
+                            <div class="invalid-tooltip">Enter brand name</div>
+                        </div>
                     </div>
-                    <div class="col-12 mb-3">
-                        <label>Brand name</label>
-                        <input type="text" class="form-control" placeholder="Brand name" required>
-                        <div class="invalid-tooltip">Enter brand name</div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="add_modal" tabindex="-1" aria-labelledby="add_modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-12 mb-3">
+                            <label for="inputPassword4" class="form-label">Select brand</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select brand</option>
+                                <option value="1">Brand 01</option>
+                                <option value="2">Brand 02</option>
+                                <option value="3">Brand 03</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>Modal name</label>
+                            <input type="text" class="form-control" placeholder="Modal name" required>
+                            <div class="invalid-tooltip">Enter modal name</div>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Submit</button>
+    </div>
+</div>
+
+<div class="modal fade" id="add_variant" tabindex="-1" aria-labelledby="add_variantLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-12 mb-3">
+                            <label for="inputPassword4" class="form-label">Select brand</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select brand</option>
+                                <option value="1">Brand 01</option>
+                                <option value="2">Brand 02</option>
+                                <option value="3">Brand 03</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="inputPassword4" class="form-label">Select Modal</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select Modal</option>
+                                <option value="1">Modal 01</option>
+                                <option value="2">Modal 02</option>
+                                <option value="3">Modal 03</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>Variant name</label>
+                            <input type="text" class="form-control" placeholder="Modal name" required>
+                            <div class="invalid-tooltip">Enter Variant name</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
         </div>
-      </div>
     </div>
 </div>

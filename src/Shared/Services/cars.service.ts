@@ -10,7 +10,7 @@ import { ApiProvider } from './api.service';
 })
 export class CarsService {
 
-  constructor(private httpClient: HttpClient, public api: ApiProvider) { }
+  constructor(public api: ApiProvider) { }
 
   /* #region  Request Type */
 
@@ -22,7 +22,8 @@ export class CarsService {
 
     let options: { headers?: HttpHeaders, params?: HttpParams, responseType?: any } = {};
     options.headers = new HttpHeaders()
-      .append("Authorization", await SessionStore.accessTokenType + " " + await SessionStore.accessToken)
+      // .append("Authorization", await SessionStore.accessTokenType + " " + await SessionStore.accessToken)
+      .append("Authorization", "")
 
     return options;
   }

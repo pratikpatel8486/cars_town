@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: "http://backend.carstown.in/public/api",
+  url: "http://backend.carstown.in/public/api/",
 };
 
 /*

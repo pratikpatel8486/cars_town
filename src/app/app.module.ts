@@ -20,6 +20,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ApiProvider } from 'src/Shared/Services/api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatFormFieldModule,
     MatIconModule,
     NgxMatSelectSearchModule,
-    CarouselModule
+    CarouselModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

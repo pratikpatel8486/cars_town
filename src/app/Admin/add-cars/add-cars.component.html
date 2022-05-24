@@ -1,126 +1,260 @@
-<section class="add-cars">
-    <form class="row">
-        <div class="col-4">
-            <label for="inputPassword4" class="form-label">Select brand</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Select brand</option>
-                <option value="1">Brand 01</option>
-                <option value="2">Brand 02</option>
-                <option value="3">Brand 03</option>
-            </select>
-        </div>
-        <div class="col-4">
-            <label for="inputPassword4" class="form-label">Select Modal</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Select Modal</option>
-                <option value="1">Modal 01</option>
-                <option value="2">Modal 02</option>
-                <option value="3">Modal 03</option>
-            </select>
-        </div>
-        <div class="col-4">
-            <label for="inputPassword4" class="form-label">Select Variant</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Select Variant</option>
-                <option value="1">LXI</option>
-                <option value="2">VXI</option>
-                <option value="3">VDI</option>
-            </select>
-        </div>
-        <div class="col-4">
-            <label for="inputPassword4" class="form-label">Make Year</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Select Year</option>
-                <option value="1">2015</option>
-                <option value="2">2016</option>
-                <option value="3">2017</option>
-                <option value="4">2018</option>
-                <option value="5">2019</option>
-                <option value="6">2020</option>
-                <option value="7">2021</option>
-                <option value="8">2022</option>
-            </select>
-        </div>
-        <div class="col-4">
-            <label for="inputPassword4" class="form-label">Reg. Year</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Select Year</option>
-                <option value="1">2015</option>
-                <option value="2">2016</option>
-                <option value="3">2017</option>
-                <option value="4">2018</option>
-                <option value="5">2019</option>
-                <option value="6">2020</option>
-                <option value="7">2021</option>
-                <option value="8">2022</option>
-            </select>
-        </div>
-        <div class="col-4">
-            <label for="inputPassword4" class="form-label">Fuel Type</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Select Fuel Type</option>
-                <option value="1">Diesel</option>
-                <option value="2">Petrol</option>
-                <option value="3">CNG</option>
-                <option value="4">Electric</option>
-            </select>
-        </div>
-        <div class="col-4">
-            <label for="inputPassword4" class="form-label">Ownership</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Select Ownership</option>
-                <option value="1">1st</option>
-                <option value="2">2st</option>
-                <option value="3">3st</option>
-                <option value="4">4st</option>
-                <option value="5">5st</option>
-                <option value="6">6st</option>
-            </select>
-        </div>
-        <div class="col-4">
-            <label class="form-label">KMS</label>
-            <input type="text" class="form-control" placeholder="10,000 km">
-        </div>
-        <div class="col-4">
-            <label for="inputPassword4" class="form-label">RTO</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Select RTO</option>
-                <option value="1">GJ 01</option>
-                <option value="2">GJ 02</option>
-                <option value="3">GJ 03</option>
-                <option value="4">GJ 04</option>
-                <option value="5">GJ 05</option>
-                <option value="6">GJ 06</option>
-            </select>
-        </div>
-        <div class="col-4">
-            <label for="inputPassword4" class="form-label">Transmission</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Transmission</option>
-                <option value="1">Manual</option>
-                <option value="2">Automatic</option>
-                <option value="3">Hybrid</option>
-            </select>
-        </div>
-        <div class="col-4">
-            <label for="inputState" class="form-label">Insurance</label>
-            <select id="inputState" class="form-select">
-                <option selected>Insurance</option>
-                <option value="1">Comprehensive</option>
-                <option value="2">Third-Party Liability Only Cover</option>
-                <option value="3">Zero Depreciation</option>
-            </select>
-        </div>
-        <div class="col-4">
-            <label for="inputZip" class="form-label">Insurance Date</label>
-            <input type="date" class="form-control" id="date">
-        </div>
-        <div class="col-4">
-            <label for="inputZip" class="form-label">Color</label>
-            <input type="text" class="form-control" placeholder="Blank">
-        </div>
-        <div class="col-6">
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-    </form>
+<section class="subhero-slider">
+    <div class="container">
+        <h2>Add cars</h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0);" routerLink="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Add cars</li>
+            </ol>
+        </nav>
+    </div>
 </section>
+<section class="add-cars">
+    <div class="container">
+        <form>
+            <div class="row">
+                <div class="col-12">
+                    <div class="add_brand">
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                            data-bs-target="#add_brand">Add Brand</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                            data-bs-target="#add_modal">Add Modal</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                            data-bs-target="#add_variant">Add Variant</button>
+                    </div>
+                </div>
+                <div class="col-9 px-4">
+                    <div class="row gy-2 pb-4">
+                        <div class="col-4">
+                            <label for="inputPassword4" class="form-label">Select brand</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select brand</option>
+                                <option value="1">Brand 01</option>
+                                <option value="2">Brand 02</option>
+                                <option value="3">Brand 03</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="inputPassword4" class="form-label">Select Modal</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select Modal</option>
+                                <option value="1">Modal 01</option>
+                                <option value="2">Modal 02</option>
+                                <option value="3">Modal 03</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="inputPassword4" class="form-label">Select Variant</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select Variant</option>
+                                <option value="1">LXI</option>
+                                <option value="2">VXI</option>
+                                <option value="3">VDI</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="inputPassword4" class="form-label">Make Year</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select Year</option>
+                                <option value="1">2015</option>
+                                <option value="2">2016</option>
+                                <option value="3">2017</option>
+                                <option value="4">2018</option>
+                                <option value="5">2019</option>
+                                <option value="6">2020</option>
+                                <option value="7">2021</option>
+                                <option value="8">2022</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="inputPassword4" class="form-label">Reg. Year</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select Year</option>
+                                <option value="1">2015</option>
+                                <option value="2">2016</option>
+                                <option value="3">2017</option>
+                                <option value="4">2018</option>
+                                <option value="5">2019</option>
+                                <option value="6">2020</option>
+                                <option value="7">2021</option>
+                                <option value="8">2022</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="inputPassword4" class="form-label">Fuel Type</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select Fuel Type</option>
+                                <option value="1">Diesel</option>
+                                <option value="2">Petrol</option>
+                                <option value="3">CNG</option>
+                                <option value="4">Electric</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="inputPassword4" class="form-label">Ownership</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select Ownership</option>
+                                <option value="1">1st</option>
+                                <option value="2">2st</option>
+                                <option value="3">3st</option>
+                                <option value="4">4st</option>
+                                <option value="5">5st</option>
+                                <option value="6">6st</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label">KMS</label>
+                            <input type="text" class="form-control" placeholder="10,000 km">
+                        </div>
+                        <div class="col-4">
+                            <label for="inputPassword4" class="form-label">RTO</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select RTO</option>
+                                <option value="1">GJ 01</option>
+                                <option value="2">GJ 02</option>
+                                <option value="3">GJ 03</option>
+                                <option value="4">GJ 04</option>
+                                <option value="5">GJ 05</option>
+                                <option value="6">GJ 06</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="inputPassword4" class="form-label">Transmission</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Transmission</option>
+                                <option value="1">Manual</option>
+                                <option value="2">Automatic</option>
+                                <option value="3">Hybrid</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="inputState" class="form-label">Insurance</label>
+                            <select id="inputState" class="form-select">
+                                <option selected>Insurance</option>
+                                <option value="1">Comprehensive</option>
+                                <option value="2">Third-Party Liability Only Cover</option>
+                                <option value="3">Zero Depreciation</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="inputZip" class="form-label">Insurance Date</label>
+                            <input type="date" class="form-control" id="date">
+                        </div>
+                        <div class="col-4">
+                            <label for="inputZip" class="form-label">Color</label>
+                            <input type="text" class="form-control" placeholder="Blank">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 px-4">
+                    <div class="row">
+                        <div class="col-12">
+                            drag and drop Multiple images upload
+                            <div>Upload photo</div>
+                            <!-- (click)="uploadPhoto()" -->
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Car</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<div class="modal fade" id="add_brand" tabindex="-1" aria-labelledby="add_brandLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-12 mb-3">
+                            <label>Brand logo</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="brand_logo">
+                                <label class="custom-file-label" for="brand_logo">Choose Image</label>
+                            </div>
+                            <div class="invalid-tooltip">Enter brand name</div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>Brand name</label>
+                            <input type="text" class="form-control" placeholder="Brand name" required>
+                            <div class="invalid-tooltip">Enter brand name</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="add_modal" tabindex="-1" aria-labelledby="add_modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-12 mb-3">
+                            <label for="inputPassword4" class="form-label">Select brand</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select brand</option>
+                                <option value="1">Brand 01</option>
+                                <option value="2">Brand 02</option>
+                                <option value="3">Brand 03</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>Modal name</label>
+                            <input type="text" class="form-control" placeholder="Modal name" required>
+                            <div class="invalid-tooltip">Enter modal name</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="add_variant" tabindex="-1" aria-labelledby="add_variantLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-12 mb-3">
+                            <label for="inputPassword4" class="form-label">Select brand</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select brand</option>
+                                <option value="1">Brand 01</option>
+                                <option value="2">Brand 02</option>
+                                <option value="3">Brand 03</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="inputPassword4" class="form-label">Select Modal</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select Modal</option>
+                                <option value="1">Modal 01</option>
+                                <option value="2">Modal 02</option>
+                                <option value="3">Modal 03</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>Variant name</label>
+                            <input type="text" class="form-control" placeholder="Modal name" required>
+                            <div class="invalid-tooltip">Enter Variant name</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

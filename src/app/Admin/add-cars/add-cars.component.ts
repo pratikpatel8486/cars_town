@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import fileDialog from 'file-dialog'
+// import fileDialog from 'file-dialog';
 
 @Component({
   selector: 'app-add-cars',
@@ -14,8 +14,8 @@ export class AddCarsComponent implements OnInit {
   }
 
   uploadPhoto() {
-    fileDialog({multiple: true, accept: 'image/*'})
-    .then((files: any) => console.log(files))
+    // fileDialog({multiple: true, accept: 'image/*'})
+    // .then((files: any) => console.log(files))
     // .then(() => {
     //     this.utilService.notify('Images uploaded successfully.</br>They will be displayed here shortly.');
     //     setTimeout(() => {

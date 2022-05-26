@@ -30,6 +30,12 @@ body { margin: 0; font-family: "Gotham"; }
         transition: all 0.3s ease;
     }
 }
+.form-control {
+    &:focus {
+        box-shadow: none;
+        border-color: #F7B317;
+    }
+}
 
 @media only screen and (min-width: 1620px) {
     .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {

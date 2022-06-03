@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -14,43 +13,48 @@ import { BrandsComponent } from './brands/brands.component';
 import { LoginComponent } from './Admin/login/login.component';
 import { CarListComponent } from './Admin/car-list/car-list.component';
 import { AddCarsComponent } from './Admin/add-cars/add-cars.component';
-
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { ApiProvider } from 'src/Shared/Services/api.service';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ToastrModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { FilterFromListPipe } from './pipes/filter-from-list.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutusComponent,
-    ContactusComponent,
-    CarsListComponent,
-    CarDetailsComponent,
-    BrandsComponent,
-    LoginComponent,
-    CarListComponent,
-    AddCarsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    NgSelect2Module,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatIconModule,
-    NgxMatSelectSearchModule,
-    CarouselModule,
-    HttpClientModule
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		AboutusComponent,
+		ContactusComponent,
+		CarsListComponent,
+		CarDetailsComponent,
+		BrandsComponent,
+		LoginComponent,
+		CarListComponent,
+		AddCarsComponent,
+		FilterFromListPipe
+	],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		NgSelect2Module,
+		MatSelectModule,
+		MatFormFieldModule,
+		MatIconModule,
+		NgxMatSelectSearchModule,
+		CarouselModule,
+		HttpClientModule,
+		NgxDropzoneModule,
+		ToastrModule.forRoot()
 
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,19 +11,19 @@ import { CarListComponent } from './Admin/car-list/car-list.component';
 import { AddCarsComponent } from './Admin/add-cars/add-cars.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'about-us', component: AboutusComponent},
-  {path: 'contact-us', component: ContactusComponent},
-  {path: 'carList', component: CarsListComponent}, 
-  {path: 'carDetails', component: CarDetailsComponent}, 
-  {path: 'brands', component: BrandsComponent}, 
-  {path: 'login', component: LoginComponent},
-  {path: 'car-list', component: CarListComponent},
-  {path: 'add-cars', component: AddCarsComponent},
+	{ path: '', component: HomeComponent },
+	{ path: 'about-us', component: AboutusComponent },
+	{ path: 'contact-us', component: ContactusComponent },
+	{ path: 'carList', component: CarsListComponent },
+	{ path: 'carDetails/:id', component: CarDetailsComponent },
+	{ path: 'brands', component: BrandsComponent },
+	{ path: 'login', component: LoginComponent },
+	{ path: 'car-list', component: CarListComponent },
+	{ path: 'add-cars', component: AddCarsComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
 export class AppRoutingModule { }

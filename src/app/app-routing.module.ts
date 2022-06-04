@@ -14,11 +14,11 @@ const routes: Routes = [
 	{ path: '', component: HomeComponent },
 	{ path: 'about-us', component: AboutusComponent },
 	{ path: 'contact-us', component: ContactusComponent },
-	{ path: 'carList', component: CarsListComponent },
+	{ path: 'car-list', component: CarsListComponent },
 	{ path: 'carDetails/:id', component: CarDetailsComponent },
 	{ path: 'brands', component: BrandsComponent },
 	{ path: 'login', component: LoginComponent },
-	{ path: 'car-list', component: CarListComponent },
+	{ path: 'admin/car-list', component: CarListComponent },
 	{ path: 'add-cars', component: AddCarsComponent },
 ];
 

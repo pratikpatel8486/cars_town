@@ -86,92 +86,12 @@
     <h2 class="section-header"><b>Accelerate</b> the Future</h2>
     <div class="brand-list">
       <ul>
-        <li>
-          <a href="#">
+        <li *ngFor="let b of brandDataList">
+          <a href="javascript:void(0);" routerLink="/car-list">
             <div class="brand-img">
-              <img src="../../assets/images/bmw.png" alt="BMW">
+              <img [src]="b.image" [alt]="b.brand">
             </div>
-            <span>BMW</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="brand-img">
-              <img src="../../assets/images/audi.png" alt="Audi">
-            </div>
-            <span>Audi</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="brand-img">
-              <img src="../../assets/images/bmw.png" alt="BMW">
-            </div>
-            <span>BMW</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="brand-img">
-              <img src="../../assets/images/audi.png" alt="Audi">
-            </div>
-            <span>Audi</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="brand-img">
-              <img src="../../assets/images/bmw.png" alt="BMW">
-            </div>
-            <span>BMW</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="brand-img">
-              <img src="../../assets/images/audi.png" alt="Audi">
-            </div>
-            <span>Audi</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="brand-img">
-              <img src="../../assets/images/bmw.png" alt="BMW">
-            </div>
-            <span>BMW</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="brand-img">
-              <img src="../../assets/images/audi.png" alt="Audi">
-            </div>
-            <span>Audi</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="brand-img">
-              <img src="../../assets/images/bmw.png" alt="BMW">
-            </div>
-            <span>BMW</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="brand-img">
-              <img src="../../assets/images/audi.png" alt="Audi">
-            </div>
-            <span>Audi</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="brand-img">
-              <img src="../../assets/images/bmw.png" alt="BMW">
-            </div>
-            <span>BMW</span>
+            <span>{{b.brand}}</span>
           </a>
         </li>
         <li>
@@ -187,17 +107,17 @@
   <div class="lestest-collection">
     <div class="collection-left">
       <div class="collection-head">
-        <h2>Lestest Collection</h2>
+        <h2>Latest collection</h2>
         <span>For Love of Car</span>
       </div>
       <a href="javascript:void(0);" class="btn btn-link">Explore More</a>
     </div>
-    <div class="collection-right" *ngFor="let car of latestCarsDataList">
+    <div class="collection-right">
       <div class="slick-wrapper">
         <div class="destination_img">
           <owl-carousel-o [options]="latestCollection">
-            <ng-container *ngFor="let data of car.images;let i = index">
-              <ng-template carouselSlide [id]="i.toString()">
+            <ng-container *ngFor="let car of latestCarsDataList">
+              <ng-template carouselSlide [id]="i.toString()" *ngFor="let data of car.images;let i = index">
                 <div class="card-slider">
                   <div class="card-image">
                     <div class="slick-wrapper">

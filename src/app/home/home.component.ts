@@ -78,6 +78,7 @@ export class HomeComponent implements OnInit {
 	constructor(public service: CarsService,
 		public commonService: CommonService,
 		private toastr: ToastrService,) { }
+	
 
 	ngOnInit(): void {
 		this.getAllBrand();
@@ -89,7 +90,7 @@ export class HomeComponent implements OnInit {
 		this.transmissionList = this.commonService.transmissionList;
 		this.insuranceList = this.commonService.insuranceList;
 		this.getLatestCars();
-
+		this.getAllBrand();
 		this.body_type = [
 			{
 				id: 'sedan',

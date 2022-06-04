@@ -111,14 +111,271 @@
         }
     }
 }
-
-.custom-dropzone {
-	height: 100%;
-	border: 1px dashed rgb(235, 79, 79);
-	border-radius: 5px;
-	font-size: 20px;
+.upload_images .col-12 {
+    padding: 0;
+    .custom-dropzone {
+        height: 100%;
+        border: 1px dashed #F7B317;
+        border-radius: 5px;
+        font-size: 20px;
+        background: #f9f9f9;
+        &.ngx-dz-hovered {
+            border: 1px solid #F7B317;
+        }
+        h2 {
+            padding: 0 1rem;
+            font-size: 1.25rem;
+            text-transform: capitalize;
+            font-weight: 500;
+            margin: 0;
+        }
+    }
 }
-
-.custom-dropzone.ngx-dz-hovered {
-  border: 1px solid rgb(235, 79, 79);
+.images-preview {
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    li {
+        ngx-dropzone-image-preview {
+            ::ng-deep {
+                img {
+                    opacity: 1;
+                }
+                ngx-dropzone-remove-badge {
+                    background: #F7B317;
+                    svg {
+                        color: #000;
+                    }
+                    &:hover, &:focus {
+                        background: #000;
+                    }
+                }
+            }
+        }
+    }
+}
+.profile-img {
+    position: relative;
+    float: none;
+    margin: 0 auto;
+    width: 130px;
+    height: 130px;
+    border-radius: 100px !important;
+    box-shadow: 0 0px 10px 0 rgba(5, 5, 5, 0.2);
+    margin-bottom: 1em;
+    span{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 100px;
+      border: 2px solid #132F4E;
+      img {
+        height: 100%;
+        width: auto;
+        max-width: none;
+      }
+    } 
+    .upload-img {
+      width: 30px;
+      overflow: hidden;
+      padding-top: 30px;
+      height: 30px;
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      outline: none;
+      background-color: #132F4E;
+      background-image: url(/assets/images/icon-camera.png);
+      background-repeat: no-repeat;
+      background-position: 5px 4px;
+      background-size: 70%;
+      margin-left: -30px;
+      cursor: pointer;
+      border-radius: 40px;
+    }
+    .delect_profile{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 25px;
+      width: 25px;
+      padding: 5px;
+      position: absolute;
+      font-size: 10px;
+      bottom: 2px;
+      border-radius: 100px;
+      left: 80%;
+      -webkit-transform: translate(-50%, 3px);
+      transform: translate(-50%, 3px);
+    }
+    .profile_img_btn {
+      display: -webkit-inline-box;
+      display: inline-flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      height: 25px;
+      width: 25px;
+      padding: 5px;
+      position: absolute;
+      font-size: 12px;
+      bottom: -7px;
+      background: #1b3454;
+      color: #fff;
+      border-radius: 100px;
+      left: 50%;
+      -webkit-transform: translate(-50%, 3px);
+      transform: translate(-50%, 3px);
+    }
+    label {
+        width: 100%;
+        text-align: center;
+        margin: 1rem 0 0;
+        font-weight: 400;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .subhero-slider {
+        padding: 5rem 0rem 6rem;
+    }
+    .add-cars {
+        form{
+            .row {
+                .add_brand {
+                    top: 0;
+                    margin-top: -6rem;
+                }
+                .row {
+                    margin-top: 0;
+                    height: auto;
+                    padding: 0.5rem;
+                }
+                .upload_images {
+                    > .row {
+                        margin-top: 1.5rem;
+                        .custom-dropzone {
+                            min-height: 10rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .subhero-slider {
+        padding: 5rem 0rem 6rem;
+    }
+    .add-cars {
+        form{
+            .row {
+                .add_brand {
+                    top: 0;
+                    margin-top: -6rem;
+                }
+                .row {
+                    margin-top: 0;
+                    height: auto;
+                    padding: 0.5rem;
+                }
+                .upload_images {
+                    > .row {
+                        margin-top: 1.5rem;
+                        .custom-dropzone {
+                            min-height: 10rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .images-preview {
+        li {
+            ngx-dropzone-image-preview {
+                ::ng-deep {
+                    ngx-dropzone-remove-badge {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 767px) {
+    .subhero-slider {
+        padding: 4rem 0rem;
+    }
+    .add-cars {
+        form{
+            .row {
+                .add_brand {
+                    top: auto;
+                    flex-wrap: wrap;
+                    margin: 1rem 0;
+                    .btn-primary {
+                        margin: 0rem auto 0 !important;
+                    }
+                }
+                .row {
+                    margin-top: 0;
+                    height: auto;
+                    padding: 0.5rem;
+                }
+                .upload_images {
+                    > .row {
+                        margin-top: 1rem;
+                        .custom-dropzone {
+                            min-height: 8rem;
+                            h2 {
+                                font-size: 1.05rem;
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+                button.btn.btn-primary {
+                    margin: 0rem auto 1rem !important;
+                }
+            }
+        }
+    }
+    .images-preview {
+        margin: 1rem 0 0;
+        padding: 0 1rem;
+        li {
+            width: 50%;
+            display: inline-block;
+            ngx-dropzone-image-preview {
+                max-width: 100% !important;
+                min-height: auto !important;
+                height: auto !important;
+                ::ng-deep {
+                    img {
+                        max-width: 100%;
+                        max-height: none;
+                    }
+                    ngx-dropzone-remove-badge {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 575px) {
+    .images-preview {
+        margin: 1rem 0 0;
+        padding: 0 1rem;
+        li {
+            width: 100%;
+            display: inline-block;
+        }
+    }   
 }

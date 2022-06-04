@@ -42,3 +42,30 @@
         }
     }
 }
+@media only screen and (max-width: 1200px) {
+    .login_main {
+        height: calc(100vh - 8.1rem);
+        .login_form {
+            width: 40%;
+        }
+    }
+}
+@media only screen and (max-width: 992px) {
+    .login_main {
+        height: calc(100vh - 8.1rem);
+        .login_form {
+            margin: 0 auto;
+            width: 50%;
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .login_main {
+        height: calc(100vh - 8.1rem);
+        .login_form {
+            margin-right: 5%;
+            width: 90%;
+        }
+    }
+}

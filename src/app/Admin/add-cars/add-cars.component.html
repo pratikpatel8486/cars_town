@@ -23,23 +23,23 @@
               Variant</button>
           </div>
         </div>
-        <div class="col-9 px-4">
+        <div class="col-12 col-lg-12 col-xl-9 px-4">
           <div class="row gy-2 pb-4">
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputPassword4" class="form-label">Select brand</label>
               <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.brand" name="brand">
                 <option selected value="">Select brand</option>
                 <option *ngFor="let item of brandDataList" [value]="item.id">{{item.brand}}</option>
               </select>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputPassword4" class="form-label">Select Modal</label>
               <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.modal" name="modal">
                 <option selected value="">Select Modal</option>
                 <option *ngFor="let item of brandModalDataList" [value]="item.id">{{item.brand_modal}}</option>
               </select>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputPassword4" class="form-label">Select Variant</label>
               <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.variant"
                 name="variant">
@@ -47,7 +47,7 @@
                 <option *ngFor="let item of brandVariantDataList" [value]="item.id">{{item.brand_variant}}</option>
               </select>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputPassword4" class="form-label">Make Year</label>
               <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.make_year"
                 name="make_year">
@@ -55,7 +55,7 @@
                 <option *ngFor="let yl of listOfYears" [value]="yl">{{yl}}</option>
               </select>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputPassword4" class="form-label">Reg. Year</label>
               <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.reg_year"
                 name="reg_year">
@@ -63,7 +63,7 @@
                 <option *ngFor="let yl of listOfYears" [value]="yl">{{yl}}</option>
               </select>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputPassword4" class="form-label">Fuel Type</label>
               <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.fuel_type"
                 name="fuel_type">
@@ -71,7 +71,7 @@
                 <option *ngFor="let fl of fuelTypeList" [value]="fl.value">{{fl.text}}</option>
               </select>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputPassword4" class="form-label">Ownership</label>
               <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.ownership"
                 name="ownership">
@@ -79,18 +79,18 @@
                 <option *ngFor="let ol of ownershipList" [value]="ol.value">{{ol.text}}</option>
               </select>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label class="form-label">KMS</label>
               <input type="text" class="form-control" placeholder="10,000 km" [(ngModel)]="carModel.kms" name="kms">
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputPassword4" class="form-label">RTO</label>
               <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.rto" name="rto">
                 <option selected value="">Select RTO</option>
                 <option *ngFor="let rl of RTOList" [value]="rl.value">{{rl.text}}</option>
               </select>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputPassword4" class="form-label">Transmission</label>
               <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.transmission"
                 name="transmission">
@@ -98,51 +98,55 @@
                 <option *ngFor="let tl of transmissionList" [value]="tl.value">{{tl.text}}</option>
               </select>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputState" class="form-label">Insurance</label>
               <select id="inputState" class="form-select" [(ngModel)]="carModel.insurance" name="insurance">
                 <option selected value="">Select Insurance</option>
                 <option *ngFor="let il of insuranceList" [value]="il.value">{{il.text}}</option>
               </select>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputZip" class="form-label">Insurance Date</label>
               <input type="date" class="form-control" id="date" [(ngModel)]="carModel.insurance_date"
                 name="insurance_date">
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputZip" class="form-label">Color</label>
               <input type="text" class="form-control" placeholder="Color" [(ngModel)]="carModel.color" name="color">
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputZip" class="form-label">Price</label>
               <input type="text" class="form-control" placeholder="Price" [(ngModel)]="carModel.price" name="price">
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4">
               <label for="inputZip" class="form-label">Body Type</label>
               <input type="text" class="form-control" placeholder="Body Type" [(ngModel)]="carModel.body_type"
                 name="body_type">
             </div>
           </div>
         </div>
-        <div class="col-3 px-4">
+        <div class="col-12 col-lg-12 col-xl-3 px-4 upload_images">
           <div class="row">
             <div class="col-12">
               <div ngx-dropzone class="custom-dropzone" [accept]="'image/*'" (change)="onSelectImage($event)"
                 [multiple]="true">
                 <ngx-dropzone-label>
                   <div>
-                    <h2>Upload OR Drag and drop car images.</h2>
+                    <h2>Upload OR Drag and drop <br> car images.</h2>
                   </div>
                 </ngx-dropzone-label>
-                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of careImagefiles"
-                  [file]="f" [removable]="true" (removed)="onRemoveImage(f)">
-                  <!-- <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label> -->
-                </ngx-dropzone-image-preview>
               </div>
             </div>
           </div>
         </div>
+        <ul class="images-preview">
+          <li *ngFor="let f of careImagefiles">
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" 
+            [file]="f" [removable]="true" (removed)="onRemoveImage(f)">
+            <!-- <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label> -->
+          </ngx-dropzone-image-preview>
+          </li>
+        </ul>
         <button type="submit" class="btn btn-primary" (click)="addCarDetails()">Add Car</button>
       </div>
     </form>
@@ -152,17 +156,34 @@
 <div class="modal fade" id="add_brand" tabindex="-1" aria-labelledby="add_brandLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" [hidden]="isBrandDialogView">
     <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add brand</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
       <div class="modal-body">
         <form class="needs-validation" novalidate>
           <div class="form-row">
-            <div class="col-12 mb-3">
-              <label>Brand logo</label>
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="brand_logo" [(ngModel)]="brandModel.image"
-                  accept="image/png, image/gif, image/jpeg" name="image" (change)="uploadBrandPhoto($event)">
-                <label class="custom-file-label" for="brand_logo">Choose Image</label>
-              </div>
-              <div class="invalid-tooltip">Enter brand name</div>
+            <div class="col-12 mb-5">
+              <div class="profile-img">
+                <span>
+                    <img [src]="brandModel.image" accept="image/png, image/gif, image/jpeg" class=" img-fluid">
+                    <div>
+                      <button type="button" class="btn btn-danger delect_profile">
+                        <svg id="delete-alt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon line" width="48" height="48"><path id="primary" d="M4,7H20M16,7V4a1,1,0,0,0-1-1H9A1,1,0,0,0,8,4V7M18,20V7H6V20a1,1,0,0,0,1,1H17A1,1,0,0,0,18,20Zm-8-9v6m4-6v6" stroke="currentColor" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>
+                      </button>
+                    </div>
+                </span>
+                <a href="javascript:void(0)" (change)="uploadBrandPhoto($event)" class="profile_img_btn">
+                  <svg id="photo-camera" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon line" width="48" height="48"><path id="primary" d="M21,7V19a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V7A1,1,0,0,1,4,6H8l.72-1.45A1,1,0,0,1,9.62,4h4.76a1,1,0,0,1,.9.55L16,6h4A1,1,0,0,1,21,7Zm-9,3a3,3,0,1,0,3,3A3,3,0,0,0,12,10Z" stroke="currentColor" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>
+                </a>
+                <label>Brand logo</label>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="brand_logo" [(ngModel)]="brandModel.image"
+                accept="image/png, image/gif, image/jpeg" name="image" (change)="uploadBrandPhoto($event)">
+              <label class="custom-file-label" for="brand_logo">Choose Image</label>
+            </div>
+            <div class="invalid-tooltip">Enter brand name</div>
             </div>
             <div class="col-12 mb-3">
               <label>Brand name</label>
@@ -173,8 +194,8 @@
           </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="doClickAddBrand()">Submit</button>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-primary mx-auto" (click)="doClickAddBrand()">Submit</button>
       </div>
     </div>
   </div>
@@ -183,6 +204,10 @@
 <div class="modal fade" id="add_modal" tabindex="-1" aria-labelledby="add_modalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" [hidden]="isBrandModelDialogView">
     <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Modal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
       <div class="modal-body">
         <form class="needs-validation" novalidate>
           <div class="form-row">
@@ -204,7 +229,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="doClickAddBrandModel()">Submit</button>
+        <button type="button" class="btn btn-primary mx-auto" (click)="doClickAddBrandModel()">Submit</button>
       </div>
     </div>
   </div>
@@ -213,6 +238,10 @@
 <div class="modal fade" id="add_variant" tabindex="-1" aria-labelledby="add_variantLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" [hidden]="isVariantDialogView">
     <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add brand</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
       <div class="modal-body">
         <form class="needs-validation" novalidate>
           <div class="form-row">
@@ -242,7 +271,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="doClickAddBrandVariant()">Submit</button>
+        <button type="button" class="btn btn-primary mx-auto" (click)="doClickAddBrandVariant()">Submit</button>
       </div>
     </div>
   </div>

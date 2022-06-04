@@ -63,12 +63,16 @@
 }
 
 .car-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
     width: 100%;
     background: #fff;
     border-radius: 15px;
     overflow: hidden;
     margin: 0 0 1rem 0;
     border: 1px solid #f0f0f0;
+    min-height: calc(100% - 1rem);
     transition: all 0.3s ease;
     transform: scale(1);
     &:hover, &:focus {

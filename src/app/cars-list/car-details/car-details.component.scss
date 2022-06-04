@@ -24,8 +24,8 @@
     border-radius: 15px;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: end;
     margin: 0 0 1rem 0;
     border: 1px solid #f0f0f0;
     transition: all 0.3s ease;
@@ -403,6 +403,105 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    :host {
+        display: flex;
+        flex-wrap: wrap;
+        .car-overview {
+            width: 100%;
+            position: inherit;
+            display: inline-block;
+            order: 1;
+        }
+        .cars_slider {
+            width: 100%;
+            order: 0;
+            ~ .container {
+                order: 1;
+                .car-details.car-specf {
+                    padding: 0 0 1.5rem;
+                    ul {
+                        li {
+                            width: calc(25% - 1rem);
+                        }
+                    }
+                }
+                .related-car.car-specf {
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 767px) {
+    :host {
+        .cars_slider {
+            ~ .container {
+                .car-details.car-specf {
+                    padding: 0 0 2rem;
+                    width: 100%;
+                    display: inline-block;
+                    > h3 {
+                        display: none;
+                    }
+                    ul {
+                        width: 100%;
+                        li {
+                            width: calc(50% - 0.8rem);
+                            margin: 0.4rem;
+                        }
+                    }
+                }
+                .related-car.car-specf {
+                    padding: 0;
+                }
+            }
+        }
+    }
+    .sub-head {
+        padding: 1rem 0 0;
+    }
+    .car_info {
+        flex-wrap: wrap;
+        .car-details {
+            width: 100%;
+            display: inline-block;
+            order: 1;
+            margin-top: 1rem;
+            ul {
+                width: 100%;
+                li {
+                    width: calc(50% - 0.8rem);
+                    margin: 0.4rem;
+                }
+            }
+        }
+        .car-action {
+            width: 100%;
+            padding: 0;
+            display: flex;
+            gap: 0.5rem;
+            a {
+                padding: 0.4rem 0.1rem 0.4rem 2rem;
+                margin-bottom: 0;
+                font-size: 0.85rem;
+            }
+        }
+    }
+    
+}
+@media only screen and (max-width: 340px) {
+    .car_info {
+        .car-action {
+            flex-wrap: wrap;
+            justify-content: center;
+            a {
+                margin: 0;
             }
         }
     }

@@ -54,11 +54,11 @@
             padding: 0;
             margin: 0;
             width: 100%;
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(15rem, auto));
             li {
-                width: calc(16.6% - 2rem);
-                margin: 1rem;
+                width: auto;
                 display: inline-block;
                 a {
                     display: inline-flex;
@@ -74,6 +74,23 @@
                     height: 100%;
                     text-decoration: none;
                     transition: all 0.2s ease-out;
+                    &.view-all {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #F7B317;
+                        border-color: #F7B317;
+                        span {
+                            white-space: pre-wrap;
+                            word-break: break-word;
+                            font-size: 1.2rem;
+                            width: 6ch;
+                        }
+                        &:hover, &:focus {
+                            background: #F7B317;
+                            color: #fff;
+                        }
+                    }
                     &:hover, &:focus {
                         background: #E3E3E3;
                         box-shadow: 0.15rem 0.15rem 0.5rem 0.1rem hsl(0deg 0% 0% / 20%);
@@ -116,10 +133,10 @@
             margin-bottom: 1rem;
         }
         .brand-list {
+            padding: 0 1rem;
             ul {
+                grid-template-columns: repeat(auto-fill, minmax(10rem, auto));
                 li {
-                    width: calc(50% - 1rem);
-                    margin: 0.5rem;
                     a {
                         .brand-img {
                             height: 5rem;

@@ -54,10 +54,10 @@
             border-radius: 15px;
             .cars-title {
                 margin: 0.5rem 0 3rem;
+                position: relative;
                 .cars-title-wrap {
                     font-weight: 600;
                     color: #000;
-                    position: relative;
                     margin: 0;
                     padding: 0 0 1rem;
                     text-transform: capitalize;
@@ -68,11 +68,18 @@
                         background: #F7B317;
                         position: absolute;
                         left: 50%;
-                        bottom: 0;
+                        bottom: -1rem;
                         transform: translateX(-50%);
+                        max-width: 100px;
                     }    
                 }
             }
         }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .about-main .container > .row {
+        padding: 2rem 1rem;
     }
 }

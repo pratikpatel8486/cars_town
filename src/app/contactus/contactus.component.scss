@@ -55,7 +55,6 @@
             form {
                 padding: 2.5rem 2rem;
                 display: inline-flex;
-                width: 100%;
                 .form-control {
                     padding: 0.6rem 0.75rem;
                     &:hover, &:focus {
@@ -139,6 +138,66 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .contact_us .container {
+        > .row {
+            form {
+                padding: 2.5rem 1rem;
+                width: auto;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .contact_us .container {
+        > .row {
+            .contact_info {
+                margin: 0rem -0.8rem;
+                border-radius: 0 0 15px 15px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .contact_us .container {
+        > .row {
+            form {
+                padding: 2rem 1rem;
+                width: auto;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 480px) {
+    .contact_us .container {
+        > .row {
+            .contact_info {
+                h2 {
+                    font-size: 1.9rem;
+                    margin: 0 0 1rem;
+                }
+            }
+            .social_btn {
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 360px) {
+    .contact_us .container {
+        > .row {
+            form {
+                padding: 2rem 0.5rem;
+                width: auto;
+            }
+            .contact_info {
+                padding: 2rem 1rem;
             }
         }
     }

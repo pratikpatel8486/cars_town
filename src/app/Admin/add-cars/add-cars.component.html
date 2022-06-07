@@ -141,10 +141,10 @@
         </div>
         <ul class="images-preview">
           <li *ngFor="let f of careImagefiles">
-            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" 
-            [file]="f" [removable]="true" (removed)="onRemoveImage(f)">
-            <!-- <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label> -->
-          </ngx-dropzone-image-preview>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" [file]="f" [removable]="true"
+              (removed)="onRemoveImage(f)">
+              <!-- <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label> -->
+            </ngx-dropzone-image-preview>
           </li>
         </ul>
         <button type="submit" class="btn btn-primary" (click)="addCarDetails()">Add Car</button>
@@ -154,11 +154,11 @@
 </section>
 
 <div class="modal fade" id="add_brand" tabindex="-1" aria-labelledby="add_brandLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" [hidden]="isBrandDialogView">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add brand</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" #btnCloseBrandModal data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form class="needs-validation" novalidate>
@@ -166,24 +166,36 @@
             <div class="col-12 mb-5">
               <div class="profile-img">
                 <span>
-                    <img [src]="brandModel.image" accept="image/png, image/gif, image/jpeg" class=" img-fluid">
-                    <div>
-                      <button type="button" class="btn btn-danger delect_profile">
-                        <svg id="delete-alt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon line" width="48" height="48"><path id="primary" d="M4,7H20M16,7V4a1,1,0,0,0-1-1H9A1,1,0,0,0,8,4V7M18,20V7H6V20a1,1,0,0,0,1,1H17A1,1,0,0,0,18,20Zm-8-9v6m4-6v6" stroke="currentColor" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>
-                      </button>
-                    </div>
+                  <img [src]="brandModel.image" accept="image/png, image/gif, image/jpeg" class=" img-fluid">
+                  <div>
+                    <button type="button" class="btn btn-danger delect_profile">
+                      <svg id="delete-alt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon line"
+                        width="48" height="48">
+                        <path id="primary"
+                          d="M4,7H20M16,7V4a1,1,0,0,0-1-1H9A1,1,0,0,0,8,4V7M18,20V7H6V20a1,1,0,0,0,1,1H17A1,1,0,0,0,18,20Zm-8-9v6m4-6v6"
+                          stroke="currentColor"
+                          style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
+                      </svg>
+                    </button>
+                  </div>
                 </span>
                 <a href="javascript:void(0)" (change)="uploadBrandPhoto($event)" class="profile_img_btn">
-                  <svg id="photo-camera" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon line" width="48" height="48"><path id="primary" d="M21,7V19a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V7A1,1,0,0,1,4,6H8l.72-1.45A1,1,0,0,1,9.62,4h4.76a1,1,0,0,1,.9.55L16,6h4A1,1,0,0,1,21,7Zm-9,3a3,3,0,1,0,3,3A3,3,0,0,0,12,10Z" stroke="currentColor" style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>
+                  <svg id="photo-camera" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon line"
+                    width="48" height="48">
+                    <path id="primary"
+                      d="M21,7V19a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V7A1,1,0,0,1,4,6H8l.72-1.45A1,1,0,0,1,9.62,4h4.76a1,1,0,0,1,.9.55L16,6h4A1,1,0,0,1,21,7Zm-9,3a3,3,0,1,0,3,3A3,3,0,0,0,12,10Z"
+                      stroke="currentColor"
+                      style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>
+                  </svg>
                 </a>
                 <label>Brand logo</label>
-            </div>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="brand_logo" [(ngModel)]="brandModel.image"
-                accept="image/png, image/gif, image/jpeg" name="image" (change)="uploadBrandPhoto($event)">
-              <label class="custom-file-label" for="brand_logo">Choose Image</label>
-            </div>
-            <div class="invalid-tooltip">Enter brand name</div>
+              </div>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="brand_logo" [(ngModel)]="brandModel.image"
+                  accept="image/png, image/gif, image/jpeg" name="image" (change)="uploadBrandPhoto($event)">
+                <label class="custom-file-label" for="brand_logo">Choose Image</label>
+              </div>
+              <div class="invalid-tooltip">Enter brand name</div>
             </div>
             <div class="col-12 mb-3">
               <label>Brand name</label>
@@ -202,11 +214,11 @@
 </div>
 
 <div class="modal fade" id="add_modal" tabindex="-1" aria-labelledby="add_modalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" [hidden]="isBrandModelDialogView">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add Modal</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" #btnCloseModal data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form class="needs-validation" novalidate>
@@ -236,11 +248,12 @@
 </div>
 
 <div class="modal fade" id="add_variant" tabindex="-1" aria-labelledby="add_variantLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" [hidden]="isVariantDialogView">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add brand</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" #btnCloseVraientModal data-bs-dismiss="modal"
+          aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form class="needs-validation" novalidate>

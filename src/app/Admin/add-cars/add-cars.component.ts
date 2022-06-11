@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { BrandModalModel, BrandModel, BrandVariantModel, CarModel } from 'src/app/model/cars.model';
 import { CarsService } from 'src/Shared/Services/cars.service';
@@ -10,12 +10,15 @@ import { CommonService } from 'src/Shared/Services/common.service';
 	styleUrls: ['./add-cars.component.scss']
 })
 export class AddCarsComponent implements OnInit {
-
+	@ViewChild('btnCloseBrandModal') btnCloseBrandModal: any;
+	@ViewChild('btnCloseModal') btnCloseModal: any;
+	@ViewChild('btnCloseVraientModal') btnCloseVraientModal: any;
 	constructor(
 		public service: CarsService,
 		public commonService: CommonService,
 		private toastr: ToastrService
 	) { }
+
 	public listOfYears: any[] = [];
 	public brandDataList: any[] = [];
 	public brandModalDataList: any[] = [];
@@ -25,9 +28,6 @@ export class AddCarsComponent implements OnInit {
 	public brandModalModel: BrandModalModel = new BrandModalModel();
 	public brandVariantModel: BrandVariantModel = new BrandVariantModel();
 	public carModel: CarModel = new CarModel();
-	public isBrandDialogView: boolean = false;
-	public isBrandModelDialogView: boolean = false;
-	public isVariantDialogView: boolean = false;
 	public careImagefiles: File[] = [];
 	public fuelTypeList: any[] = [];
 	public ownershipList: any[] = [];
@@ -97,7 +97,7 @@ export class AddCarsComponent implements OnInit {
 		await this.service.addNewBrand(formData).then(res => {
 			if (res.status) {
 				this.toastr.success(res.message, 'Success!');
-				this.isBrandDialogView = true;
+				this.btnCloseBrandModal.nativeElement.click();
 				this.getAllBrand();
 				this.brandModel = new BrandModel();
 			} else {
@@ -120,12 +120,12 @@ export class AddCarsComponent implements OnInit {
 		const formData = new FormData();
 		formData.append('brand_id', this.brandModalModel.brand_id);
 		formData.append('brand_modal', this.brandModalModel.brand_modal);
-		await this.service.addNewBrandVariant(formData).then(res => {
+		await this.service.addNewBrandModel(formData).then(res => {
 			if (res.status) {
-				this.isBrandModelDialogView = true;
-				this.toastr.success(res.message, 'Success!');
-				this.getAllBrandModel();
 				this.brandModel = new BrandModalModel();
+				this.toastr.success(res.message, 'Success!');
+				this.btnCloseModal.nativeElement.click();
+				this.getAllBrandModel();
 			} else {
 				this.toastr.error(res.message, 'Error!');
 			}
@@ -153,8 +153,8 @@ export class AddCarsComponent implements OnInit {
 		formData.append('brand_variant', this.brandVariantModel.brand_variant);
 		await this.service.addNewBrandVariant(formData).then(res => {
 			if (res.status) {
-				this.isVariantDialogView = true;
 				this.toastr.success(res.message, 'Success!');
+				this.btnCloseVraientModal.nativeElement.click();
 				this.getAllBrandVariant();
 				this.brandVariantModel = new BrandVariantModel();
 			} else {

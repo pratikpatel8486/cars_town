@@ -20,6 +20,7 @@ const routes: Routes = [
 	{ path: 'login', component: LoginComponent },
 	{ path: 'admin/car-list', component: CarListComponent },
 	{ path: 'add-cars', component: AddCarsComponent },
+	{ path: 'edit-cars/:id', component: AddCarsComponent },
 ];
 
 @NgModule({

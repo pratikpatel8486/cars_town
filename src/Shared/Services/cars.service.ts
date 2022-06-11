@@ -103,8 +103,8 @@ export class CarsService {
 		return this.post<any>(endpoint.ADD_CAR, body);
 	}
 
-	async UpdateCar(body: any): Promise<any> {
-		return this.post<any>(endpoint.UPDATE_CAR, body);
+	async UpdateCar(body: any, id: any): Promise<any> {
+		return this.post<any>(endpoint.UPDATE_CAR + id + "/?_method=PUT", body);
 	}
 
 	async GetCar(ID: any): Promise<any> {

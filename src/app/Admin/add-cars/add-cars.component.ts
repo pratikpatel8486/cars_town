@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { async } from '@angular/core/testing';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BrandModalModel, BrandModel, BrandVariantModel, CarModel } from 'src/app/model/cars.model';
 import { CarsService } from 'src/Shared/Services/cars.service';
 import { CommonService } from 'src/Shared/Services/common.service';
+import { SessionStore } from 'src/Shared/Util/SessionStore';
 // import { fileDialog } from 'file-dialog'
 @Component({
 	selector: 'app-add-cars',
@@ -13,11 +16,26 @@ export class AddCarsComponent implements OnInit {
 	@ViewChild('btnCloseBrandModal') btnCloseBrandModal: any;
 	@ViewChild('btnCloseModal') btnCloseModal: any;
 	@ViewChild('btnCloseVraientModal') btnCloseVraientModal: any;
+	SelectedBrandModal: any[] = [];
+	Logo: any;
+	carID: any;
+	carsDetail: any;
+	SelectedBrandModalForAddCars: any[] = [];
+	SelectedModal: any[] = [];
 	constructor(
 		public service: CarsService,
 		public commonService: CommonService,
-		private toastr: ToastrService
-	) { }
+		private toastr: ToastrService, private router: Router, private activatedRoute: ActivatedRoute
+	) {
+		if (SessionStore.accessToken == null || SessionStore.accessTokenType == null) {
+			this.router.navigate(['/login',])
+			return;
+		}
+
+		if (this.router.url.split("/")[1] == 'edit-cars') {
+			this.carID = this.activatedRoute.snapshot.params['id']
+		}
+	}
 
 	public listOfYears: any[] = [];
 	public brandDataList: any[] = [];
@@ -35,11 +53,16 @@ export class AddCarsComponent implements OnInit {
 	public transmissionList: any[] = [];
 	public insuranceList: any[] = [];
 
-	ngOnInit(): void {
-		this.getAllBrand();
-		this.getAllBrandModel();
-		this.getAllBrandVariant();
+	async ngOnInit() {
+		await this.getAllBrand();
+		await this.getAllBrandModel();
+		await this.getAllBrandVariant();
 		this.listOfYears = this.getYearList();
+
+		if (this.carID) {
+			await this.getCar();
+
+		}
 		this.fuelTypeList = this.commonService.fuelTypeList;
 		this.ownershipList = this.commonService.ownershipList;
 		this.RTOList = this.commonService.RTOList;
@@ -182,8 +205,22 @@ export class AddCarsComponent implements OnInit {
 			}
 			this.documentFileData = files[0];
 			this.brandModel.image = files[0].name;
-			// this._FileUploadService.upload(files);
+
+			let reader = new FileReader();
+
+			reader.onload = (event: any) => {
+				this.Logo = event.target.result;
+			}
+
+			reader.readAsDataURL(files[0]);
+
 		}
+	}
+
+	RemoveBrandImg() {
+		this.documentFileData = null
+		this.brandModel.image = '';
+		this.Logo = null
 	}
 
 	private getYearList() {
@@ -229,6 +266,46 @@ export class AddCarsComponent implements OnInit {
 		formData.append('price', this.carModel.price);
 		formData.append('body_type', this.carModel.body_type);
 		await this.service.AddNewCar(formData).then(res => {
+			if (res.status) {
+				this.toastr.success(res.message, 'Success!');
+				this.carModel = new CarModel();
+				this.careImagefiles = [];
+			} else {
+				this.toastr.error(res.message, 'Error!');
+			}
+		});
+
+	}
+
+
+	async UpdateCar() {
+		if (!this.checkValidation()) {
+			return;
+		}
+		const formData: any = new FormData();
+
+		for (let file of this.careImagefiles) {
+			formData.append('images[]', file);
+		}
+
+		formData.append('brand', this.carModel.brand);
+		formData.append('modal', this.carModel.modal);
+		formData.append('variant', this.carModel.variant);
+		formData.append('make_year', this.carModel.make_year);
+		formData.append('reg_year', this.carModel.reg_year);
+		formData.append('fuel_type', this.carModel.fuel_type);
+		formData.append('ownership', this.carModel.ownership);
+		formData.append('kms', this.carModel.kms);
+		formData.append('rto', this.carModel.rto);
+		formData.append('transmission', this.carModel.transmission);
+		formData.append('insurance', this.carModel.insurance);
+		formData.append('insurance_date', this.carModel.insurance_date);
+		formData.append('color', this.carModel.color);
+		formData.append('price', this.carModel.price);
+		formData.append('body_type', this.carModel.body_type);
+
+
+		await this.service.UpdateCar(formData, this.carsDetail.id).then(res => {
 			if (res.status) {
 				this.toastr.success(res.message, 'Success!');
 				this.carModel = new CarModel();
@@ -319,4 +396,65 @@ export class AddCarsComponent implements OnInit {
 		this.careImagefiles.splice(this.careImagefiles.indexOf(event), 1);
 	}
 	//#endregion
+
+	SelectBrand(event: any, IsFromAddCar: boolean) {
+		const brandid = event.target.value
+		if (IsFromAddCar) {
+			if (brandid == "") {
+				this.SelectedBrandModal = [];
+				return;
+			}
+			this.SelectedBrandModal = this.brandModalDataList.filter(x => x.brand_id == brandid)
+		}
+		else {
+			if (brandid == "") {
+				this.SelectedBrandModalForAddCars = [];
+				return;
+			}
+			this.SelectedBrandModalForAddCars = this.brandModalDataList.filter(x => x.brand_id == brandid)
+		}
+	}
+
+	SelectModal(event: any) {
+		const Modalid = event.target.value
+		if (Modalid == "") {
+			this.brandVariantDataList = [];
+			return;
+		}
+		this.SelectedModal = this.brandVariantDataList.filter(x => x.model_id == Modalid && x.brand_id == this.carModel.brand)
+	}
+
+
+
+	async getCar() {
+		await this.service.GetCar(this.carID).then(res => {
+			if (res.status) {
+				this.carsDetail = res.data;
+				this.SelectedModal = this.brandVariantDataList.filter(x => x.model_id == this.carsDetail.modal && x.brand_id == this.carsDetail.brand)
+				this.SelectedBrandModalForAddCars = this.brandModalDataList.filter(x => x.brand_id == this.carsDetail.brand)
+
+				this.carModel.body_type = this.carsDetail.body_type
+				this.carModel.brand = this.carsDetail.brand
+				this.carModel.color = this.carsDetail.color
+				// this.carModel.created_at = this.carsDetail.created_at
+				this.carModel.fuel_type = this.carsDetail.fuel_type
+				this.carModel.images = this.carsDetail.images
+				this.carModel.insurance = this.carsDetail.insurance
+				this.carModel.insurance_date = this.carsDetail.insurance_date
+				this.carModel.kms = this.carsDetail.kms
+				this.carModel.make_year = this.carsDetail.make_year
+				this.carModel.modal = this.carsDetail.modal
+				this.carModel.ownership = this.carsDetail.ownership
+				this.carModel.price = this.carsDetail.price
+				this.carModel.reg_year = this.carsDetail.reg_year
+				this.carModel.rto = this.carsDetail.rto
+				this.carModel.transmission = this.carsDetail.transmission
+				// this.carModel.updated_at = this.carsDetail.updated_at
+				this.carModel.variant = this.carsDetail.variant
+			} else {
+				this.toastr.error(res.message, 'Error!');
+			}
+		})
+	}
+
 }

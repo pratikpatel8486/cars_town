@@ -1,95 +1,174 @@
 <div class="container">
-    <div class="row sub-head">
-        <div class="col-12 col-sm-12 col-md-6 d-flex align-items-center">
-            <h3 class="inner_head">Collection For Car Lovers</h3>
-        </div>
-        <div class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-end">
-            <div class="filters_by">
-                <label>Filters:</label>
-                <button class="btn btn-link" type="button" data-bs-toggle="modal" data-bs-target="#filter_modal">
-                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M11.9112 11.9345C11.5851 11.9111 11.2902 11.9189 11.0107 11.8721C10.1646 11.7395 9.55134 11.0297 9.53582 10.1717C9.52029 9.37603 9.52806 8.57262 9.53582 7.777C9.54358 6.70057 10.281 5.95176 11.36 5.92055C11.5308 5.91275 11.7016 5.92055 11.9112 5.92055C11.9112 5.78795 11.9112 5.68655 11.9112 5.57735C11.9112 4.01731 11.9112 2.46507 11.9112 0.905038C11.9112 0.788035 11.9034 0.671032 11.9267 0.55403C11.9733 0.265423 12.2294 0.054818 12.5244 0.0626182C12.8039 0.0704184 13.0445 0.281023 13.0911 0.55403C13.1066 0.671032 13.1066 0.788035 13.1066 0.905038C13.1066 2.44947 13.1066 4.00171 13.1066 5.54615C13.1066 5.65535 13.1066 5.75675 13.1066 5.91275C13.2774 5.91275 13.4249 5.91275 13.5724 5.91275C14.7445 5.92055 15.482 6.66157 15.482 7.8238C15.482 8.55702 15.482 9.28243 15.482 10.0156C15.4742 11.1467 14.729 11.8877 13.6034 11.9033C13.4482 11.9033 13.2929 11.9033 13.1066 11.9033C13.1066 12.0515 13.1066 12.1763 13.1066 12.3011C13.1066 16.2402 13.1066 20.1793 13.1066 24.1262C13.1066 24.251 13.1144 24.3836 13.0911 24.5084C13.0523 24.7892 12.8039 24.992 12.5244 24.9998C12.2294 25.0076 11.9733 24.797 11.9345 24.5084C11.9189 24.3836 11.9189 24.2588 11.9189 24.1262C11.9189 20.1871 11.9189 16.248 11.9189 12.3011C11.9112 12.1919 11.9112 12.0749 11.9112 11.9345Z"
-                            fill="currentColor" />
-                        <path
-                            d="M3.57424 13.0733C3.90803 13.0967 4.21077 13.0967 4.50575 13.1435C5.32082 13.2761 5.9263 13.9781 5.94959 14.8128C5.96511 15.6162 5.95735 16.4274 5.95735 17.2386C5.94959 18.3072 5.22767 19.0561 4.16419 19.0951C3.98565 19.1029 3.79935 19.0951 3.582 19.0951C3.582 19.2355 3.582 19.3525 3.582 19.4695C3.582 21.0139 3.582 22.5661 3.582 24.1106C3.582 24.2198 3.582 24.329 3.57424 24.4304C3.53543 24.7268 3.30255 24.9452 3.00757 24.953C2.72035 24.9608 2.45643 24.7424 2.40985 24.4538C2.39433 24.3602 2.40209 24.2588 2.40209 24.1652C2.40209 22.5973 2.40209 21.0295 2.40209 19.4617C2.40209 19.3525 2.40209 19.2511 2.40209 19.0951C2.22355 19.0951 2.0683 19.0951 1.90528 19.0951C0.748658 19.0717 0.0112126 18.3228 0.00345004 17.1762C0.00345004 16.4352 -0.00431255 15.6942 0.00345004 14.961C0.0112126 13.8767 0.771946 13.1201 1.85871 13.1045C2.02172 13.1045 2.18474 13.1045 2.38656 13.1045C2.38656 12.9719 2.38656 12.8549 2.38656 12.7457C2.38656 8.79101 2.38656 4.84412 2.38656 0.889429C2.38656 0.803627 2.38656 0.717825 2.38656 0.624223C2.40209 0.273214 2.63497 0.0236084 2.96099 0.0158083C3.30255 0.00800808 3.54319 0.249814 3.56648 0.624223C3.57424 0.717825 3.56648 0.819227 3.56648 0.912829C3.56648 4.83632 3.56648 8.75981 3.56648 12.6755C3.57424 12.8003 3.57424 12.9251 3.57424 13.0733Z"
-                            fill="currentColor" />
-                        <path
-                            d="M22.6158 21.4741C22.6158 22.3477 22.6158 23.1823 22.6158 24.017C22.6158 24.5708 22.4217 24.8438 22.0258 24.8516C21.6299 24.8594 21.4281 24.5786 21.4281 24.0326C21.4281 23.2135 21.4281 22.3945 21.4203 21.5833C21.4203 21.5677 21.4048 21.5443 21.3815 21.4819C21.2418 21.4819 21.0788 21.4819 20.9235 21.4819C19.7902 21.4663 19.0527 20.7253 19.0527 19.5865C19.0527 18.8454 19.0527 18.1044 19.0527 17.3712C19.0605 16.2558 19.8057 15.507 20.9158 15.4914C21.0788 15.4914 21.2418 15.4914 21.4358 15.4914C21.4358 15.3354 21.4358 15.2106 21.4358 15.0858C21.4358 10.3588 21.4358 5.62413 21.4358 0.897223C21.4358 0.772421 21.4358 0.639817 21.4436 0.515014C21.4747 0.210807 21.7075 0.000202414 22.0103 0.000202414C22.3208 -0.00759777 22.5692 0.210807 22.608 0.522815C22.6235 0.632017 22.6158 0.73342 22.6158 0.842622C22.6158 5.60073 22.6158 10.3588 22.6158 15.117C22.6158 15.234 22.6158 15.3432 22.6158 15.468C22.9418 15.4914 23.2445 15.4836 23.5317 15.5382C24.3701 15.6786 24.9756 16.3884 24.9911 17.2542C25.0066 18.042 24.9989 18.8298 24.9911 19.6177C24.9833 20.7019 24.2537 21.4507 23.1747 21.4819C23.0117 21.4819 22.8331 21.4741 22.6158 21.4741Z"
-                            fill="currentColor" />
-                    </svg>
-                </button>
-            </div>
-            <button type="button" class="btn btn-primary add_btn">
-                <svg id="plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon line" width="48"
-                    height="48">
-                    <path id="primary" d="M5,12H19M12,5V19" stroke="currentColor"
-                        style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5;"></path>
-                </svg>Add cars
-            </button>
-        </div>
+  <div class="row sub-head">
+    <div class="col-12 col-sm-12 col-md-6 d-flex align-items-center">
+      <h3 class="inner_head">Collection For Car Lovers</h3>
     </div>
-    <div class="row mb-4">
-        <div class="col-12 col-md-6 col-lg-4 col-xl-4" *ngFor="let car of carsDataList">
-            <div class="car-item">
-                <div class="card-image">
-                    <owl-carousel-o [options]="customOptions">
-                        <ng-container *ngFor="let data of car.images;let i = index">
-                            <ng-template carouselSlide [id]="i.toString()">
-                                <img [src]="data" alt="car" title="car">
-                            </ng-template>
-                        </ng-container>
-                    </owl-carousel-o>
-                </div>
-                <a class="card-body" href="javascript:void(0);" routerLink="/carDetails">
-                    <div class="price">
-                        <h3>{{car.price | currency:'USD'}}</h3>
-                        <div class="card-icon">
-                            <a href="javascript:void(0);" title="Edit" (click)="EditCard(car)" class="btn btn-success">
-                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                    viewBox="0 0 490.584 490.584" style="enable-background:new 0 0 490.584 490.584;"
-                                    xml:space="preserve">
-                                    <g>
-                                        <path
-                                            d="M100.911,419.404l123.8-51c3.1-2.1,6.2-4.2,8.3-6.2l203.9-248.6c6.2-9.4,5.2-21.8-3.1-29.1l-96.8-80.1 c-8-5.9-20.3-6.8-28.1,3.1l-204.9,248.5c-2.1,3.1-3.1,6.2-4.2,9.4l-26,132.1C72.511,420.104,90.611,424.004,100.911,419.404z M326.611,49.004l65.5,54.1l-177.7,217.1l-64.9-53.7L326.611,49.004z M133.411,306.904l44.4,36.8l-57.2,23.6L133.411,306.904z" />
-                                        <path
-                                            d="M469.111,448.504h-349.5c0,0-72.5,3.4-75.2-15.2c0-1-1.8-5.6,7.6-17c7.3-9.4,6.2-21.8-2.1-29.1 c-9.4-7.3-21.8-6.2-29.1,2.1c-19.8,23.9-25,44.7-15.6,63.5c25.5,47.5,111.3,36.3,115.4,37.3h348.5c11.4,0,20.8-9.4,20.8-20.8 C490.011,457.804,480.611,448.504,469.111,448.504z" />
-                                    </g>
-                                </svg> Edit
-                            </a>
-                            <a href="javascript:void(0);" title="Delete Trip" class="btn btn-danger">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M11 2C10.4477 2 10 2.44772 10 3V4H14V3C14 2.44772 13.5523 2 13 2H11ZM16 4V3C16 1.34315 14.6569 0 13 0H11C9.34315 0 8 1.34315 8 3V4H3C2.44772 4 2 4.44772 2 5C2 5.55228 2.44772 6 3 6H3.10496L4.80843 21.3313C4.97725 22.8506 6.26144 24 7.79009 24H16.2099C17.7386 24 19.0228 22.8506 19.1916 21.3313L20.895 6H21C21.5523 6 22 5.55228 22 5C22 4.44772 21.5523 4 21 4H16ZM18.8827 6H5.11726L6.7962 21.1104C6.85247 21.6169 7.28054 22 7.79009 22H16.2099C16.7195 22 17.1475 21.6169 17.2038 21.1104L18.8827 6ZM10 9C10.5523 9 11 9.44771 11 10V18C11 18.5523 10.5523 19 10 19C9.44772 19 9 18.5523 9 18V10C9 9.44771 9.44772 9 10 9ZM14 9C14.5523 9 15 9.44771 15 10V18C15 18.5523 14.5523 19 14 19C13.4477 19 13 18.5523 13 18V10C13 9.44771 13.4477 9 14 9Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <h3>{{car.brand || '' | filterFromList:brandDataList :'id' : 'brand'}}</h3>
-                    <ul class="card-info">
-                        <li>
-                            <p>Reg.Year</p>
-                            <h4>{{car.reg_year}}</h4>
-                        </li>
-                        <li>
-                            <p>KMS</p>
-                            <h4>{{car.kms || '' | number : '1.0-2'}}</h4>
-                        </li>
-                        <li>
-                            <p>Fuel Type</p>
-                            <h4>{{car.fuel_type || '' | filterFromList:fuelTypeList :'value' : 'text'}}</h4>
-                        </li>
-                        <li>
-                            <p>Ownership</p>
-                            <h4>{{car.ownership || '' | filterFromList:ownershipList :'value' : 'text'}}</h4>
-                        </li>
-                    </ul>
-                </a>
-            </div>
+    <div class="col-12 col-sm-12 col-md-6 d-flex align-items-center justify-content-end">
+      <div class="filters_by">
+        <label>Filters:</label>
+        <button class="btn btn-link" type="button" data-bs-toggle="modal" data-bs-target="#filter_modal">
+          <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11.9112 11.9345C11.5851 11.9111 11.2902 11.9189 11.0107 11.8721C10.1646 11.7395 9.55134 11.0297 9.53582 10.1717C9.52029 9.37603 9.52806 8.57262 9.53582 7.777C9.54358 6.70057 10.281 5.95176 11.36 5.92055C11.5308 5.91275 11.7016 5.92055 11.9112 5.92055C11.9112 5.78795 11.9112 5.68655 11.9112 5.57735C11.9112 4.01731 11.9112 2.46507 11.9112 0.905038C11.9112 0.788035 11.9034 0.671032 11.9267 0.55403C11.9733 0.265423 12.2294 0.054818 12.5244 0.0626182C12.8039 0.0704184 13.0445 0.281023 13.0911 0.55403C13.1066 0.671032 13.1066 0.788035 13.1066 0.905038C13.1066 2.44947 13.1066 4.00171 13.1066 5.54615C13.1066 5.65535 13.1066 5.75675 13.1066 5.91275C13.2774 5.91275 13.4249 5.91275 13.5724 5.91275C14.7445 5.92055 15.482 6.66157 15.482 7.8238C15.482 8.55702 15.482 9.28243 15.482 10.0156C15.4742 11.1467 14.729 11.8877 13.6034 11.9033C13.4482 11.9033 13.2929 11.9033 13.1066 11.9033C13.1066 12.0515 13.1066 12.1763 13.1066 12.3011C13.1066 16.2402 13.1066 20.1793 13.1066 24.1262C13.1066 24.251 13.1144 24.3836 13.0911 24.5084C13.0523 24.7892 12.8039 24.992 12.5244 24.9998C12.2294 25.0076 11.9733 24.797 11.9345 24.5084C11.9189 24.3836 11.9189 24.2588 11.9189 24.1262C11.9189 20.1871 11.9189 16.248 11.9189 12.3011C11.9112 12.1919 11.9112 12.0749 11.9112 11.9345Z"
+              fill="currentColor" />
+            <path
+              d="M3.57424 13.0733C3.90803 13.0967 4.21077 13.0967 4.50575 13.1435C5.32082 13.2761 5.9263 13.9781 5.94959 14.8128C5.96511 15.6162 5.95735 16.4274 5.95735 17.2386C5.94959 18.3072 5.22767 19.0561 4.16419 19.0951C3.98565 19.1029 3.79935 19.0951 3.582 19.0951C3.582 19.2355 3.582 19.3525 3.582 19.4695C3.582 21.0139 3.582 22.5661 3.582 24.1106C3.582 24.2198 3.582 24.329 3.57424 24.4304C3.53543 24.7268 3.30255 24.9452 3.00757 24.953C2.72035 24.9608 2.45643 24.7424 2.40985 24.4538C2.39433 24.3602 2.40209 24.2588 2.40209 24.1652C2.40209 22.5973 2.40209 21.0295 2.40209 19.4617C2.40209 19.3525 2.40209 19.2511 2.40209 19.0951C2.22355 19.0951 2.0683 19.0951 1.90528 19.0951C0.748658 19.0717 0.0112126 18.3228 0.00345004 17.1762C0.00345004 16.4352 -0.00431255 15.6942 0.00345004 14.961C0.0112126 13.8767 0.771946 13.1201 1.85871 13.1045C2.02172 13.1045 2.18474 13.1045 2.38656 13.1045C2.38656 12.9719 2.38656 12.8549 2.38656 12.7457C2.38656 8.79101 2.38656 4.84412 2.38656 0.889429C2.38656 0.803627 2.38656 0.717825 2.38656 0.624223C2.40209 0.273214 2.63497 0.0236084 2.96099 0.0158083C3.30255 0.00800808 3.54319 0.249814 3.56648 0.624223C3.57424 0.717825 3.56648 0.819227 3.56648 0.912829C3.56648 4.83632 3.56648 8.75981 3.56648 12.6755C3.57424 12.8003 3.57424 12.9251 3.57424 13.0733Z"
+              fill="currentColor" />
+            <path
+              d="M22.6158 21.4741C22.6158 22.3477 22.6158 23.1823 22.6158 24.017C22.6158 24.5708 22.4217 24.8438 22.0258 24.8516C21.6299 24.8594 21.4281 24.5786 21.4281 24.0326C21.4281 23.2135 21.4281 22.3945 21.4203 21.5833C21.4203 21.5677 21.4048 21.5443 21.3815 21.4819C21.2418 21.4819 21.0788 21.4819 20.9235 21.4819C19.7902 21.4663 19.0527 20.7253 19.0527 19.5865C19.0527 18.8454 19.0527 18.1044 19.0527 17.3712C19.0605 16.2558 19.8057 15.507 20.9158 15.4914C21.0788 15.4914 21.2418 15.4914 21.4358 15.4914C21.4358 15.3354 21.4358 15.2106 21.4358 15.0858C21.4358 10.3588 21.4358 5.62413 21.4358 0.897223C21.4358 0.772421 21.4358 0.639817 21.4436 0.515014C21.4747 0.210807 21.7075 0.000202414 22.0103 0.000202414C22.3208 -0.00759777 22.5692 0.210807 22.608 0.522815C22.6235 0.632017 22.6158 0.73342 22.6158 0.842622C22.6158 5.60073 22.6158 10.3588 22.6158 15.117C22.6158 15.234 22.6158 15.3432 22.6158 15.468C22.9418 15.4914 23.2445 15.4836 23.5317 15.5382C24.3701 15.6786 24.9756 16.3884 24.9911 17.2542C25.0066 18.042 24.9989 18.8298 24.9911 19.6177C24.9833 20.7019 24.2537 21.4507 23.1747 21.4819C23.0117 21.4819 22.8331 21.4741 22.6158 21.4741Z"
+              fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+      <button type="button" class="btn btn-primary add_btn" (click)="doClickAddCar()">
+        <svg id="plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon line" width="48" height="48">
+          <path id="primary" d="M5,12H19M12,5V19" stroke="currentColor"
+            style="fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5;"></path>
+        </svg>Add cars
+      </button>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-4" *ngFor="let car of carsDataList">
+      <div class="car-item">
+        <div class="card-image">
+          <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let data of car.images;let i = index">
+              <ng-template carouselSlide [id]="i.toString()">
+                <img [src]="data" alt="car" title="car">
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
         </div>
+        <a class="card-body" href="javascript:void(0);" routerLink="/carDetails">
+          <div class="price">
+            <h3>{{car.price | currency:'INR'}}</h3>
+            <div class="card-icon">
+              <a href="javascript:void(0);" title="Edit Trip" class="btn btn-success" (click)="doClickCarDetails(car)">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 490.584 490.584"
+                  style="enable-background:new 0 0 490.584 490.584;" xml:space="preserve">
+                  <g>
+                    <path
+                      d="M100.911,419.404l123.8-51c3.1-2.1,6.2-4.2,8.3-6.2l203.9-248.6c6.2-9.4,5.2-21.8-3.1-29.1l-96.8-80.1 c-8-5.9-20.3-6.8-28.1,3.1l-204.9,248.5c-2.1,3.1-3.1,6.2-4.2,9.4l-26,132.1C72.511,420.104,90.611,424.004,100.911,419.404z M326.611,49.004l65.5,54.1l-177.7,217.1l-64.9-53.7L326.611,49.004z M133.411,306.904l44.4,36.8l-57.2,23.6L133.411,306.904z" />
+                    <path
+                      d="M469.111,448.504h-349.5c0,0-72.5,3.4-75.2-15.2c0-1-1.8-5.6,7.6-17c7.3-9.4,6.2-21.8-2.1-29.1 c-9.4-7.3-21.8-6.2-29.1,2.1c-19.8,23.9-25,44.7-15.6,63.5c25.5,47.5,111.3,36.3,115.4,37.3h348.5c11.4,0,20.8-9.4,20.8-20.8 C490.011,457.804,480.611,448.504,469.111,448.504z" />
+                  </g>
+                </svg> Edit
+              </a>
+              <a href="javascript:void(0);" title="Delete Trip" class="btn btn-danger" (click)="doClickDeleteCar(car)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M11 2C10.4477 2 10 2.44772 10 3V4H14V3C14 2.44772 13.5523 2 13 2H11ZM16 4V3C16 1.34315 14.6569 0 13 0H11C9.34315 0 8 1.34315 8 3V4H3C2.44772 4 2 4.44772 2 5C2 5.55228 2.44772 6 3 6H3.10496L4.80843 21.3313C4.97725 22.8506 6.26144 24 7.79009 24H16.2099C17.7386 24 19.0228 22.8506 19.1916 21.3313L20.895 6H21C21.5523 6 22 5.55228 22 5C22 4.44772 21.5523 4 21 4H16ZM18.8827 6H5.11726L6.7962 21.1104C6.85247 21.6169 7.28054 22 7.79009 22H16.2099C16.7195 22 17.1475 21.6169 17.2038 21.1104L18.8827 6ZM10 9C10.5523 9 11 9.44771 11 10V18C11 18.5523 10.5523 19 10 19C9.44772 19 9 18.5523 9 18V10C9 9.44771 9.44772 9 10 9ZM14 9C14.5523 9 15 9.44771 15 10V18C15 18.5523 14.5523 19 14 19C13.4477 19 13 18.5523 13 18V10C13 9.44771 13.4477 9 14 9Z"
+                    fill="currentColor" /></svg>
+              </a>
+            </div>
+          </div>
+          <h3>{{car.brand || '' | filterFromList:brandDataList :'id' : 'brand'}}</h3>
+          <ul class="card-info">
+            <li>
+              <p>Reg.Year</p>
+              <h4>{{car.reg_year}}</h4>
+            </li>
+            <li>
+              <p>KMS</p>
+              <h4>{{car.kms || '' | number : '1.0-2'}}</h4>
+            </li>
+            <li>
+              <p>Fuel Type</p>
+              <h4>{{car.fuel_type || '' | filterFromList:fuelTypeList :'value' : 'text'}}</h4>
+            </li>
+            <li>
+              <p>Ownership</p>
+              <h4>{{car.ownership || '' | filterFromList:ownershipList :'value' : 'text'}}</h4>
+            </li>
+          </ul>
+        </a>
+      </div>
+    </div>
 
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="filter_modal" tabindex="-1" aria-labelledby="filter_modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="reset_btn">
+            <button type="button" class="btn-secoundry" (click)="doClickResetFilter()">Reset</button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M9.13704 7.44137C10.4461 8.85286 11.6686 10.1716 12.9006 11.4904C13.0932 11.6965 13.2953 11.9025 13.4878 12.1189C14.1423 12.8401 14.1712 13.8292 13.5648 14.4988C12.9488 15.1788 11.9766 15.1685 11.3124 14.4576C10.0611 13.1286 8.8194 11.7789 7.5777 10.4395C7.40444 10.2438 7.2408 10.048 7.03866 9.81103C6.91353 9.93466 6.81727 10.0274 6.73064 10.1201C5.38306 11.5625 4.0451 13.0255 2.6879 14.4576C1.79272 15.4055 0.358504 15.014 0.0601105 13.7467C-0.0938989 13.0873 0.108238 12.5413 0.551016 12.0674C1.87935 10.6559 3.20768 9.23407 4.53601 7.82257C4.63227 7.71954 4.74777 7.65773 4.88253 7.565C4.72852 7.37955 4.64189 7.27652 4.54564 7.18379C3.19805 5.75169 1.85047 4.31959 0.512513 2.88749C-0.122776 2.2075 -0.170904 1.22873 0.387381 0.55904C1.00342 -0.172465 1.99485 -0.19307 2.6879 0.538435C3.75634 1.67175 4.80553 2.81537 5.86434 3.94869C6.23011 4.3402 6.58626 4.73171 6.98091 5.16443C7.08679 5.0614 7.18305 4.96867 7.26968 4.87595C8.61726 3.43354 9.95522 1.97054 11.3124 0.538435C12.2172 -0.419734 13.6322 -0.0282241 13.9402 1.23903C14.1038 1.89842 13.9017 2.44447 13.4493 2.9184C12.1306 4.3505 10.8023 5.7723 9.47394 7.18379C9.38731 7.28682 9.26217 7.34864 9.13704 7.44137Z"
+                  fill="currentColor" />
+              </svg>
+            </button>
+          </div>
+          <div class="filter_main">
+            <form class="row">
+              <div class="filter_items">
+                <h3>Registration Year</h3>
+                <ul>
+                  <li *ngFor="let fr of filterRegistrationYear">
+                    <a href="javascript:void(0);"
+                      [ngClass]="{selected_filter: filterCarModel.registration_year === fr.value}"
+                      (click)="filterCarModel.registration_year = fr.value">{{fr.text}}</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="filter_items">
+                <h3>By Kilometers Driven</h3>
+                <ul>
+                  <li *ngFor="let fk of filterKMSDriven">
+                    <a href="javascript:void(0);" [ngClass]="{selected_filter: filterCarModel.kms_driven === fk.value}"
+                      (click)="filterCarModel.kms_driven = fk.value">{{fk.text}}</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="filter_items">
+                <h3>Budget</h3>
+                <ul>
+                  <li *ngFor="let fb of filterBudget">
+                    <a href="javascript:void(0);" [ngClass]="{selected_filter: filterCarModel.budget === fb.value}"
+                      (click)="filterCarModel.budget = fb.value">{{fb.text}}</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="filter_items">
+                <h3>Body Type</h3>
+                <ul>
+                  <li *ngFor="let fbt of filterBodyType">
+                    <a href="javascript:void(0);" [ngClass]="{selected_filter: filterCarModel.body_type === fbt.value}"
+                      (click)="filterCarModel.body_type = fbt.value">{{fbt.text}}</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="filter_items">
+                <h3>Brand</h3>
+                <div class="form-group">
+                  <!-- <ng-select2 [placeholder]="'Select Brand'" [data]="brandDataList"></ng-select2> -->
+                  <select class="form-select" aria-label="Default select example" [(ngModel)]="filterCarModel.brand"
+                    name="brand">
+                    <option selected value="">Select brand</option>
+                    <option *ngFor="let item of brandDataList" [value]="item.id">{{item.brand}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="filter_items">
+                <h3>model</h3>
+                <div class="form-group">
+                  <!-- <ng-select2 [placeholder]="'Select Brand'" [data]="brandDataList"></ng-select2> -->
+                  <select class="form-select" aria-label="Default select example" [(ngModel)]="filterCarModel.modal"
+                    name="modal">
+                    <option selected value="">Select model</option>
+                    <option *ngFor="let item of brandModalDataList" [value]="item.id">{{item.brand_modal}}</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+            <button type="button" class="btn btn-primary apply_filter" (click)="doApplyFilter()">Apply Filter</button>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

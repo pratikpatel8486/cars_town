@@ -157,11 +157,12 @@ export class CarsListComponent implements OnInit {
 		let kms = this.filterCarModel.kms_driven;
 		let budget = this.filterCarModel.budget;
 		let body_type = this.filterCarModel.body_type;
+		let variant = "";
 		if (!brand && !modal && !registration_year && !kms && !budget && !body_type) {
 			this.toastr.info('Please select at least 1 filter !', 'Info!');
 			return;
 		}
-		this.service.GetAllCarss(brand, modal, registration_year, kms, budget, body_type).then(res => {
+		this.service.GetAllCarss(brand, modal, registration_year, kms, budget, body_type, variant).then(res => {
 			if (res.status) {
 				this.carsDataList = res.data;
 			} else {

@@ -103,16 +103,16 @@ export class CarsService {
 		return this.post<any>(endpoint.ADD_CAR, body);
 	}
 
-	async UpdateCar(body: any, id: any): Promise<any> {
-		return this.post<any>(endpoint.UPDATE_CAR + id + "/?_method=PUT", body);
+	async UpdateCar(body: any): Promise<any> {
+		return this.post<any>(endpoint.UPDATE_CAR, body);
 	}
 
 	async GetCar(ID: any): Promise<any> {
 		return this.get<any>(endpoint.GET_CAR + ID);
 	}
 
-	async GetAllCarss(brand: string, modal: string, registration_year: string, kms: string, budget: string, boday_type: string): Promise<any> {
-		return this.get<any>(endpoint.GET_ALL_CAR + "brand=" + brand + "&modal=" + modal + "&registration_year=" + registration_year + "&kms=" + kms + "&budget=" + budget + "&body_type=" + budget);
+	async GetAllCarss(brand: string, modal: string, registration_year: string, kms: string, budget: string, boday_type: string, variant: string = ""): Promise<any> {
+		return this.get<any>(endpoint.GET_ALL_CAR + "brand=" + brand + "&modal=" + modal + "&registration_year=" + registration_year + "&kms=" + kms + "&budget=" + budget + "&body_type=" + budget + "&variant=" + variant);
 	}
 
 	async GetAllCarssData(): Promise<any> {

@@ -4,7 +4,7 @@
       <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-5 details_head">
         <h3 class="inner_head">{{carsDetail.brand || '' | filterFromList:brandDataList :'id' : 'brand'}}</h3>
         <p>Vehicle Code : <span>CTKM01</span></p>
-        <h4 class="price">{{carsDetail.price | currency:'USD'}}</h4>
+        <h4 class="price">{{carsDetail.price | currency:'INR'}}</h4>
       </div>
       <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-7 d-flex align-items-center justify-content-end car_info">
         <div class="car-details">
@@ -55,7 +55,8 @@
             </span>
             +91 97257 41461
           </a>
-          <a href="https://wa.me/919687900131" class="btn btn-outline whatsapp_action" target="_blank">
+          <a href="https://wa.me/919687900131?text=CarID : *{{carsDetail.id}}* , CarBrand:*{{carsDetail.brand }}* ,  price: *{{carsDetail.price}}* , Type : *{{carsDetail.body_type}}* "
+            text="ABD" class="btn btn-outline whatsapp_action" target="_blank">
             <span>
               <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -152,9 +153,10 @@
           </div>
           <a class="card-body" href="javascript:void(0);">
             <div class="price">
-              <h3>{{car.price | currency:'USD'}}</h3>
+              <h3>{{car.price | currency:'INR'}}</h3>
               <div class="card-icon">
-                <a href="https://wa.me/919687900131" title="Whatsapp" class="whatsapp_icon">
+                <a href="https://wa.me/919687900131?text=CarID : *{{carsDetail.id}}* , CarBrand:*{{carsDetail.brand }}* ,  price: *{{carsDetail.price}}* , Type : *{{carsDetail.body_type}}* "
+                  title="Whatsapp" class="whatsapp_icon">
                   <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M0.893066 22C1.06334 21.3625 1.22025 20.7629 1.38051 20.1598C1.70102 18.9503 2.02487 17.7407 2.33537 16.5243C2.36207 16.4209 2.34538 16.2796 2.2953 16.1866C1.28035 14.274 0.826293 12.2236 1.0166 10.0629C1.35046 6.34122 3.0899 3.47756 6.18484 1.5271C8.05448 0.348559 10.1144 -0.140779 12.2946 0.0384153C15.7467 0.324437 18.4511 1.98543 20.3808 4.94558C21.7263 7.00975 22.2504 9.32204 22.0735 11.7929C21.7396 16.4898 18.3309 20.532 13.8604 21.5486C11.3397 22.1206 8.93255 21.7829 6.63555 20.5699C6.55543 20.5286 6.43523 20.5148 6.34843 20.5355C4.61567 21.0007 2.88291 21.4693 1.15014 21.938C1.08003 21.9587 1.00658 21.9725 0.893066 22ZM3.4438 19.3948C3.49722 19.3845 3.52393 19.3776 3.55064 19.3707C4.53554 19.1053 5.52044 18.8469 6.50201 18.5712C6.69231 18.5195 6.83254 18.5471 6.99613 18.6505C8.72889 19.7256 10.6052 20.1426 12.6051 19.8979C14.3846 19.6808 15.9471 18.9399 17.3059 17.7304C20.0302 15.3078 21.0419 11.2312 19.7732 7.77477C18.2007 3.48445 13.9739 1.10669 9.63367 2.07847C5.9144 2.91586 2.96637 6.27919 2.78275 10.5213C2.7093 12.2339 3.0899 13.8467 3.9012 15.3492C4.04142 15.6076 4.26177 15.8557 4.29182 16.1245C4.32187 16.3968 4.16161 16.6931 4.08482 16.9791C3.87115 17.7786 3.66081 18.5747 3.4438 19.3948Z"

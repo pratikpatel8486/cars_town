@@ -1,11 +1,15 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { async } from '@angular/core/testing';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BrandModalModel, BrandModel, BrandVariantModel, CarModel } from 'src/app/model/cars.model';
 import { CarsService } from 'src/Shared/Services/cars.service';
 import { CommonService } from 'src/Shared/Services/common.service';
-import { SessionStore } from 'src/Shared/Util/SessionStore';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { DomSanitizer } from '@angular/platform-browser';
+
 // import { fileDialog } from 'file-dialog'
 @Component({
 	selector: 'app-add-cars',
@@ -16,26 +20,16 @@ export class AddCarsComponent implements OnInit {
 	@ViewChild('btnCloseBrandModal') btnCloseBrandModal: any;
 	@ViewChild('btnCloseModal') btnCloseModal: any;
 	@ViewChild('btnCloseVraientModal') btnCloseVraientModal: any;
-	SelectedBrandModal: any[] = [];
 	Logo: any;
-	carID: any;
-	carsDetail: any;
-	SelectedBrandModalForAddCars: any[] = [];
-	SelectedModal: any[] = [];
+
 	constructor(
 		public service: CarsService,
 		public commonService: CommonService,
-		private toastr: ToastrService, private router: Router, private activatedRoute: ActivatedRoute
-	) {
-		if (SessionStore.accessToken == null || SessionStore.accessTokenType == null) {
-			this.router.navigate(['/login',])
-			return;
-		}
-
-		if (this.router.url.split("/")[1] == 'edit-cars') {
-			this.carID = this.activatedRoute.snapshot.params['id']
-		}
-	}
+		private toastr: ToastrService,
+		private route: ActivatedRoute,
+		private http: HttpClient,
+		protected sanitizer: DomSanitizer
+	) { }
 
 	public listOfYears: any[] = [];
 	public brandDataList: any[] = [];
@@ -46,30 +40,85 @@ export class AddCarsComponent implements OnInit {
 	public brandModalModel: BrandModalModel = new BrandModalModel();
 	public brandVariantModel: BrandVariantModel = new BrandVariantModel();
 	public carModel: CarModel = new CarModel();
-	public careImagefiles: File[] = [];
+	public carImagefiles: File[] = [];
 	public fuelTypeList: any[] = [];
 	public ownershipList: any[] = [];
 	public RTOList: any[] = [];
 	public transmissionList: any[] = [];
 	public insuranceList: any[] = [];
+	public carID: any;
+	SelectedBrandModal: any[] = [];
+	SelectedModal: any[] = [];
+	SelectedBrandModalForAddCars: any[] = [];
 
-	async ngOnInit() {
-		await this.getAllBrand();
-		await this.getAllBrandModel();
-		await this.getAllBrandVariant();
+	ngOnInit(): void {
+		this.getAllBrand();
+		this.getAllBrandModel();
+		this.getAllBrandVariant();
 		this.listOfYears = this.getYearList();
-
-		if (this.carID) {
-			await this.getCar();
-
-		}
 		this.fuelTypeList = this.commonService.fuelTypeList;
 		this.ownershipList = this.commonService.ownershipList;
 		this.RTOList = this.commonService.RTOList;
 		this.transmissionList = this.commonService.transmissionList;
 		this.insuranceList = this.commonService.insuranceList;
+		this.route.params.subscribe(params => {
+			this.carID = +params['id'];
+		});
+
+		if (this.carID) {
+			this.getCar();
+		}
 	}
 
+	async getCar() {
+		await this.service.GetCar(this.carID).then(res => {
+			if (res.status) {
+				this.carModel = res.data;
+				this.SelectedModal = this.brandVariantDataList.filter(x => x.model_id == this.carModel.modal && x.brand_id == this.carModel.brand)
+				this.SelectedBrandModalForAddCars = this.brandModalDataList.filter(x => x.brand_id == this.carModel.brand)
+
+				this.carImagefiles = [];
+				const images: any = res.data.images || [];
+				if (images && images.length > 0) {
+					images.forEach((elementURL: any) => {
+						// 	this.getBase64ImageFromUrl(elementURL).then((result: any) => {
+						// 		const imgArr = elementURL.split('/');
+						// 		const fileImage = new File([result], imgArr[imgArr.length - 1], { type: 'image/png' });
+						// 		this.carImagefiles.push(fileImage);
+						// 		//this.carImagefiles.push(result)
+						// 	}).catch((err: any) => console.error(err));
+						// this.http
+						// 	.get(
+						// 		elementURL,
+						// 		{ responseType: 'blob' },
+						// 	)
+						// 	.pipe(switchMap((blob: Blob) => this.convertBlobToBase64(blob)))
+						// 	.subscribe((base64ImageUrl: any) => {
+						// 		const imgArr = elementURL.split('/');
+						// 		const fileImage = new File([base64ImageUrl], imgArr[imgArr.length - 1], { type: 'image/png' });
+						// 		this.carImagefiles.push(fileImage);
+						// 	});
+						this.http.get(elementURL, { responseType: 'blob' })
+							.pipe(switchMap((blob: Blob) => this.convertBlobToBase64(blob, elementURL)))
+							.subscribe((base64ImageUrl: any) => {
+								const imgArr = elementURL.split('/');
+								const imageFile: any = new File([base64ImageUrl], imgArr[imgArr.length - 1], { type: 'image/jpeg' });
+								// let imageArray: any = [];
+								// imageArray.push(imageFile)
+								this.carImagefiles.push(imageFile);
+							});
+					});
+
+				}
+
+				const insuranceDate = new DatePipe('en-US').transform(res.data.insurance_date, 'yyyy-MM-dd')
+				this.carModel.insurance_date = insuranceDate;
+			} else {
+				this.toastr.error(res.message, 'Error!');
+			}
+		})
+
+	}
 	async getAllBrand() {
 		await this.service.GetAllBrand().then(res => {
 			if (res.status) {
@@ -100,7 +149,6 @@ export class AddCarsComponent implements OnInit {
 				this.toastr.error(res.message, 'Error!');
 			}
 		})
-
 	}
 
 	async doClickAddBrand() {
@@ -205,22 +253,15 @@ export class AddCarsComponent implements OnInit {
 			}
 			this.documentFileData = files[0];
 			this.brandModel.image = files[0].name;
+			// this._FileUploadService.upload(files);
 
 			let reader = new FileReader();
 
 			reader.onload = (event: any) => {
 				this.Logo = event.target.result;
 			}
-
 			reader.readAsDataURL(files[0]);
-
 		}
-	}
-
-	RemoveBrandImg() {
-		this.documentFileData = null
-		this.brandModel.image = '';
-		this.Logo = null
 	}
 
 	private getYearList() {
@@ -240,13 +281,13 @@ export class AddCarsComponent implements OnInit {
 		const formData: any = new FormData();
 		// const formDataImages = new FormData();
 		// const imageFiles: any[] = [];
-		// if (this.careImagefiles && this.careImagefiles.length > 0) {
-		// 	for (let i = 0; i < this.careImagefiles.length; i++) {
-		// 		formDataImages.append(i.toString(), this.careImagefiles[i]);
+		// if (this.carImagefiles && this.carImagefiles.length > 0) {
+		// 	for (let i = 0; i < this.carImagefiles.length; i++) {
+		// 		formDataImages.append(i.toString(), this.carImagefiles[i]);
 		// 		imageFiles.push(formDataImages.getAll(i.toString()));
 		// 	}
 		// }
-		for (let file of this.careImagefiles) {
+		for (let file of this.carImagefiles) {
 			formData.append('images[]', file);
 		}
 
@@ -269,47 +310,7 @@ export class AddCarsComponent implements OnInit {
 			if (res.status) {
 				this.toastr.success(res.message, 'Success!');
 				this.carModel = new CarModel();
-				this.careImagefiles = [];
-			} else {
-				this.toastr.error(res.message, 'Error!');
-			}
-		});
-
-	}
-
-
-	async UpdateCar() {
-		if (!this.checkValidation()) {
-			return;
-		}
-		const formData: any = new FormData();
-
-		for (let file of this.careImagefiles) {
-			formData.append('images[]', file);
-		}
-
-		formData.append('brand', this.carModel.brand);
-		formData.append('modal', this.carModel.modal);
-		formData.append('variant', this.carModel.variant);
-		formData.append('make_year', this.carModel.make_year);
-		formData.append('reg_year', this.carModel.reg_year);
-		formData.append('fuel_type', this.carModel.fuel_type);
-		formData.append('ownership', this.carModel.ownership);
-		formData.append('kms', this.carModel.kms);
-		formData.append('rto', this.carModel.rto);
-		formData.append('transmission', this.carModel.transmission);
-		formData.append('insurance', this.carModel.insurance);
-		formData.append('insurance_date', this.carModel.insurance_date);
-		formData.append('color', this.carModel.color);
-		formData.append('price', this.carModel.price);
-		formData.append('body_type', this.carModel.body_type);
-
-
-		await this.service.UpdateCar(formData, this.carsDetail.id).then(res => {
-			if (res.status) {
-				this.toastr.success(res.message, 'Success!');
-				this.carModel = new CarModel();
-				this.careImagefiles = [];
+				this.carImagefiles = [];
 			} else {
 				this.toastr.error(res.message, 'Error!');
 			}
@@ -370,7 +371,7 @@ export class AddCarsComponent implements OnInit {
 			this.toastr.info('Color is required !', 'Info!');
 			return false;
 		}
-		if (!this.careImagefiles) {
+		if (!this.carImagefiles) {
 			this.toastr.info('Car Images is required !', 'Info!');
 			return false;
 		}
@@ -388,14 +389,49 @@ export class AddCarsComponent implements OnInit {
 	//#region  car multiple image upload 
 	onSelectImage(event: any) {
 		console.log(event);
-		this.careImagefiles.push(...event.addedFiles);
+		this.carImagefiles.push(...event.addedFiles);
 	}
 
 	onRemoveImage(event: any) {
 		console.log(event);
-		this.careImagefiles.splice(this.careImagefiles.indexOf(event), 1);
+		this.carImagefiles.splice(this.carImagefiles.indexOf(event), 1);
+	}
+
+
+	convertBlobToBase64(blob: Blob, elementURL: any) {
+		return Observable.create((observer: any) => {
+			const reader = new FileReader();
+			const binaryString = reader.readAsDataURL(blob);
+			reader.onload = (event: any) => {
+				console.log('Image in Base64: ', event.target.result);
+				// const imgArr = elementURL.split('/');
+				// const imageName = imgArr[imgArr.length - 1];
+				// const imageBlob = this.dataURItoBlob(event.target.result.toString());
+				// const imageFile = new File([imageBlob], imageName, { type: 'image/png' });
+				observer.next(event.target.result.toString());
+				observer.complete();
+			};
+
+			reader.onerror = (event: any) => {
+				console.log('File could not be read: ' + event.target.error.code);
+				observer.next(event.target.error.code);
+				observer.complete();
+			};
+		});
+	}
+
+	dataURItoBlob(dataURI: any) {
+		const byteString = atob(dataURI);
+		const arrayBuffer = new ArrayBuffer(byteString.length);
+		const int8Array = new Uint8Array(arrayBuffer);
+		for (let i = 0; i < byteString.length; i++) {
+			int8Array[i] = byteString.charCodeAt(i);
+		}
+		const blob = new Blob([int8Array], { type: 'image/png' });
+		return blob;
 	}
 	//#endregion
+
 
 	SelectBrand(event: any, IsFromAddCar: boolean) {
 		const brandid = event.target.value
@@ -424,37 +460,12 @@ export class AddCarsComponent implements OnInit {
 		this.SelectedModal = this.brandVariantDataList.filter(x => x.model_id == Modalid && x.brand_id == this.carModel.brand)
 	}
 
-
-
-	async getCar() {
-		await this.service.GetCar(this.carID).then(res => {
-			if (res.status) {
-				this.carsDetail = res.data;
-				this.SelectedModal = this.brandVariantDataList.filter(x => x.model_id == this.carsDetail.modal && x.brand_id == this.carsDetail.brand)
-				this.SelectedBrandModalForAddCars = this.brandModalDataList.filter(x => x.brand_id == this.carsDetail.brand)
-
-				this.carModel.body_type = this.carsDetail.body_type
-				this.carModel.brand = this.carsDetail.brand
-				this.carModel.color = this.carsDetail.color
-				// this.carModel.created_at = this.carsDetail.created_at
-				this.carModel.fuel_type = this.carsDetail.fuel_type
-				this.carModel.images = this.carsDetail.images
-				this.carModel.insurance = this.carsDetail.insurance
-				this.carModel.insurance_date = this.carsDetail.insurance_date
-				this.carModel.kms = this.carsDetail.kms
-				this.carModel.make_year = this.carsDetail.make_year
-				this.carModel.modal = this.carsDetail.modal
-				this.carModel.ownership = this.carsDetail.ownership
-				this.carModel.price = this.carsDetail.price
-				this.carModel.reg_year = this.carsDetail.reg_year
-				this.carModel.rto = this.carsDetail.rto
-				this.carModel.transmission = this.carsDetail.transmission
-				// this.carModel.updated_at = this.carsDetail.updated_at
-				this.carModel.variant = this.carsDetail.variant
-			} else {
-				this.toastr.error(res.message, 'Error!');
-			}
-		})
+	RemoveBrandImg() {
+		this.documentFileData = null
+		this.brandModel.image = '';
+		this.Logo = null
 	}
+
+
 
 }

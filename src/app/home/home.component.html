@@ -5,37 +5,44 @@
       <form class="row">
         <div class="form-group">
           <!-- <h3>Single selection</h3> -->
+
           <mat-form-field>
-            <mat-select placeholder="Car selection" #singleSelect>
-              <mat-option>
-                <ngx-mat-select-search></ngx-mat-select-search>
-              </mat-option>
-              <mat-option value="101">
-                car1
-              </mat-option>
-              <mat-option value="102">
-                car2
+            <mat-select placeholder="Brand selection" [(ngModel)]="filterCarModel.brand" name="brand">
+              <mat-option *ngFor="let braqnd of brandDataList" [value]="braqnd.id">
+                {{braqnd.brand}}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div class="form-group">
           <mat-form-field>
-            <mat-select placeholder="Car selection" #singleSelect>
-              <mat-option>
-                <ngx-mat-select-search></ngx-mat-select-search>
-              </mat-option>
-              <mat-option>
-                car1
-              </mat-option>
-              <mat-option>
-                car2
+
+            <mat-select placeholder="model selection" [(ngModel)]="filterCarModel.modal" name="modal">
+              <mat-option *ngFor="let modal of brandModalDataList" [value]="modal.id">
+                {{modal.brand_modal}}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <!-- Selected Bank: {{bankCtrl.value?.name}} -->
         </div>
         <div class="form-group">
+          <mat-form-field>
+            <mat-select placeholder="Variant selection" [(ngModel)]="filterCarModel.variant" name="Variant">
+              <mat-option *ngFor="let Variant of brandVariantDataList" [value]="Variant.id">
+                {{Variant.brand_variant}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-select placeholder="KMS Driven" [(ngModel)]="filterCarModel.kms_driven" name="KMS">
+              <mat-option *ngFor="let Variant of filterKMSDriven" [value]="Variant.value">
+                {{Variant.text}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!-- <div class="form-group">
           <mat-form-field>
             <mat-select placeholder="Car selection" #singleSelect>
               <mat-option>
@@ -49,25 +56,9 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <!-- Selected Bank: {{bankCtrl.value?.name}} -->
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-select placeholder="Car selection" #singleSelect>
-              <mat-option>
-                <ngx-mat-select-search></ngx-mat-select-search>
-              </mat-option>
-              <mat-option>
-                car1
-              </mat-option>
-              <mat-option>
-                car2
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <!-- Selected Bank: {{bankCtrl.value?.name}} -->
-        </div>
-        <button type="submit" class="btn btn-primary">
+        </div> -->
+        <!-- Selected Bank: {{bankCtrl.value?.name}} -->
+        <button type="submit" class="btn btn-primary" (click)="doApplyFilter()">
           <svg id="search-alt3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon line" width="48"
             height="48">
             <path id="primary" d="M17,10a7,7,0,1,1-7-7A7,7,0,0,1,17,10Zm3,10L15,15" stroke="currentColor"
@@ -81,6 +72,82 @@
     </div>
   </div>
 </section>
+<section>
+  <div class="row mb-4">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-4" *ngFor="let car of carsDataList">
+      <div class="car-item"  (click)="doClickCarDetails(car)">
+        <div class="card-image">
+          <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let data of car.images;let i = index">
+              <ng-template carouselSlide [id]="i.toString()">
+                <img [src]="data" alt="car" title="car">
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+        <a class="card-body" href="javascript:void(0);">
+          <div class="price">
+            <h3>{{car.price | currency:'INR'}}</h3>
+            <div class="card-icon">
+              <a href="https://wa.me/919687900131?text=carID:{{car.id}}" title="Whatsapp" class="whatsapp_icon">
+                <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M0.893066 22C1.06334 21.3625 1.22025 20.7629 1.38051 20.1598C1.70102 18.9503 2.02487 17.7407 2.33537 16.5243C2.36207 16.4209 2.34538 16.2796 2.2953 16.1866C1.28035 14.274 0.826293 12.2236 1.0166 10.0629C1.35046 6.34122 3.0899 3.47756 6.18484 1.5271C8.05448 0.348559 10.1144 -0.140779 12.2946 0.0384153C15.7467 0.324437 18.4511 1.98543 20.3808 4.94558C21.7263 7.00975 22.2504 9.32204 22.0735 11.7929C21.7396 16.4898 18.3309 20.532 13.8604 21.5486C11.3397 22.1206 8.93255 21.7829 6.63555 20.5699C6.55543 20.5286 6.43523 20.5148 6.34843 20.5355C4.61567 21.0007 2.88291 21.4693 1.15014 21.938C1.08003 21.9587 1.00658 21.9725 0.893066 22ZM3.4438 19.3948C3.49722 19.3845 3.52393 19.3776 3.55064 19.3707C4.53554 19.1053 5.52044 18.8469 6.50201 18.5712C6.69231 18.5195 6.83254 18.5471 6.99613 18.6505C8.72889 19.7256 10.6052 20.1426 12.6051 19.8979C14.3846 19.6808 15.9471 18.9399 17.3059 17.7304C20.0302 15.3078 21.0419 11.2312 19.7732 7.77477C18.2007 3.48445 13.9739 1.10669 9.63367 2.07847C5.9144 2.91586 2.96637 6.27919 2.78275 10.5213C2.7093 12.2339 3.0899 13.8467 3.9012 15.3492C4.04142 15.6076 4.26177 15.8557 4.29182 16.1245C4.32187 16.3968 4.16161 16.6931 4.08482 16.9791C3.87115 17.7786 3.66081 18.5747 3.4438 19.3948Z"
+                    fill="currentColor" />
+                  <path
+                    d="M6.15479 8.45021C6.17148 7.54734 6.51202 6.80644 7.12633 6.18271C7.33333 5.9725 7.57371 5.86567 7.86418 5.87257C8.02109 5.87601 8.17467 5.89669 8.32825 5.88291C8.592 5.86223 8.7556 6.00007 8.84908 6.22406C9.15958 6.97185 9.47007 7.72309 9.75386 8.48122C9.8006 8.60528 9.76053 8.8086 9.68708 8.92921C9.50012 9.23935 9.28311 9.53226 9.05608 9.81139C8.89582 10.0078 8.87245 10.1801 9.006 10.4076C9.86403 11.8825 11.0526 12.9611 12.6084 13.5917C12.8555 13.6916 12.989 13.6675 13.1559 13.4573C13.423 13.123 13.6935 12.7853 13.9472 12.4407C14.0874 12.2512 14.2544 12.165 14.4647 12.2684C15.2259 12.6371 15.9838 13.0093 16.7383 13.3953C16.8151 13.4366 16.8852 13.5745 16.8886 13.671C16.9186 14.4808 16.6849 15.1596 15.9871 15.6283C15.1157 16.2141 14.2009 16.2624 13.2294 15.9798C10.7354 15.2561 8.88581 13.6434 7.4001 11.5206C6.90932 10.8176 6.46194 10.094 6.27164 9.2359C6.21154 8.9809 6.19151 8.71211 6.15479 8.45021Z"
+                    fill="currentColor" />
+                </svg>
+              </a>
+              <a href="tel:+919725741461" title="Mobile No." class="email_icon">
+                <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M9.87154 9.41846C11.22 11.745 13.0317 13.5455 15.3729 14.8855C15.5797 14.4827 15.77 14.0963 15.9685 13.7099C16.3573 12.9371 16.8785 12.6905 17.7058 12.896C19.3851 13.3071 21.0562 13.7181 22.7273 14.1374C23.4635 14.3265 23.8358 14.8033 23.8358 15.5597C23.8358 17.6643 23.8358 19.7607 23.8358 21.8653C23.8358 23.5753 22.5701 24.7263 20.8659 24.5947C15.9602 24.2165 11.6253 22.449 7.91092 19.2674C3.91522 15.8392 1.40033 11.5313 0.440699 6.37663C0.258701 5.38187 0.142883 4.36245 0.142883 3.35946C0.151156 2.10985 1.34242 1.02465 2.59987 1.00821C4.86658 0.991769 7.12501 0.99999 9.38345 1.00821C9.92945 1.00821 10.4424 1.39461 10.583 1.95364C11.0463 3.73764 11.493 5.52163 11.9314 7.30562C12.0721 7.88932 11.766 8.4648 11.2034 8.76077C10.9883 8.87586 10.7567 8.97452 10.5416 9.08961C10.3265 9.18827 10.1197 9.29514 9.87154 9.41846ZM21.172 16.4722C20.1627 16.2174 19.1783 15.9707 18.1938 15.7241C18.0118 15.6748 17.9126 15.7159 17.8381 15.8967C17.6478 16.316 17.4328 16.7271 17.2259 17.1381C16.8123 17.952 16.1174 18.1987 15.2984 17.804C11.5095 16.0118 8.71337 13.2413 6.92647 9.46779C6.5542 8.68678 6.79411 7.97976 7.58001 7.59336C8.01019 7.37961 8.45691 7.17408 8.87882 6.95211C8.96155 6.91101 9.05255 6.7548 9.036 6.68081C8.79609 5.66961 8.53964 4.66663 8.28319 3.66365C6.43838 3.66365 4.61012 3.66365 2.79014 3.66365C3.36922 14.0634 12.3864 21.6515 21.1803 21.9064C21.172 20.106 21.172 18.3055 21.172 16.4722Z"
+                    fill="currentColor" />
+                  <path
+                    d="M14.6035 4.95438C15.4887 4.95438 16.3408 4.95438 17.2177 4.95438C17.2177 5.82582 17.2177 6.68904 17.2177 7.56871C16.3408 7.56871 15.4804 7.56871 14.6035 7.56871C14.6035 6.68904 14.6035 5.83404 14.6035 4.95438Z"
+                    fill="currentColor" />
+                  <path
+                    d="M21.1885 4.96259C21.1885 5.82581 21.1885 6.68081 21.1885 7.56047C20.3116 7.56047 19.4513 7.56047 18.5661 7.56047C18.5661 6.69725 18.5661 5.84225 18.5661 4.96259C19.4347 4.96259 20.3034 4.96259 21.1885 4.96259Z"
+                    fill="currentColor" />
+                  <path
+                    d="M25.143 7.56047C24.2743 7.56047 23.414 7.56047 22.5288 7.56047C22.5288 6.68903 22.5288 5.83403 22.5288 4.96259C23.3892 4.96259 24.2495 4.96259 25.143 4.96259C25.143 5.81759 25.143 6.68081 25.143 7.56047Z"
+                    fill="currentColor" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- <h3>Honda City 1.5 SV MT (I-DTEC)</h3> -->
+          <!-- {{car.body_type}} {{car.brand}} {{car.model}} {{car.variant}} -->
+          <h3>
+            {{car.brand || '' | filterFromList:brandDataList :'id' : 'brand'}}
+          </h3>
+          <ul class="card-info">
+            <li>
+              <p>Reg.Year</p>
+              <h4>{{car.reg_year}}</h4>
+            </li>
+            <li>
+              <p>KMS</p>
+              <h4>{{car.kms || '' | number : '1.0-2'}}</h4>
+            </li>
+            <li>
+              <p>Fuel Type</p>
+              <h4>{{car.fuel_type || '' | filterFromList:fuelTypeList :'value' : 'text'}}</h4>
+            </li>
+            <li>
+              <p>Ownership</p>
+              <h4>{{car.ownership || '' | filterFromList:ownershipList :'value' : 'text'}}</h4>
+            </li>
+          </ul>
+        </a>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
 <section class="accelerate-main" id="accelerate-main">
   <div class="container">
     <h2 class="section-header"><b>Accelerate</b> the Future</h2>
@@ -118,21 +185,13 @@
           <owl-carousel-o [options]="latestCollection">
             <ng-container *ngFor="let car of latestCarsDataList">
               <ng-template carouselSlide [id]="i.toString()" *ngFor="let data of car.images;let i = index">
-                <div class="card-slider">
-                  <div class="card-image">
-                    <div class="slick-wrapper">
-                      <owl-carousel-o [options]="customOptions">
-                        <ng-container *ngFor="let data of car.images;let i = index">
-                          <ng-template carouselSlide [id]="i.toString()">
-                            <img [src]="data" alt="car" title="car">
-                          </ng-template>
-                        </ng-container>
-                      </owl-carousel-o>
-                    </div>
+                <div class="card-slider" (click)="doClickCarDetails(car)" >
+                  <div class="card-image" [id]="i.toString()" *ngIf="i==0">
+                    <img [src]="data" alt="car" title="car">
                   </div>
-                  <div class="card-body">
+                  <div class="card-body" >
                     <div class="price">
-                      <h3>{{car.price | currency:'USD'}}</h3>
+                      <h3>{{car.price | currency:'INR'}}</h3>
                       <div class="card-icon">
                         <i class="fas fa-comment"></i>
                         <i class="fas fa-phone-alt"></i>

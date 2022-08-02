@@ -18,7 +18,7 @@
             <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_brand">Add
               Brand</button>
             <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_modal">Add
-              Modal</button>
+              model</button>
             <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add_variant">Add
               Variant</button>
           </div>
@@ -34,10 +34,10 @@
               </select>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
-              <label for="inputPassword4" class="form-label">Select Modal</label>
+              <label for="inputPassword4" class="form-label">Select model</label>
               <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.modal" name="modal"
                 (change)="SelectModal($event)">
-                <option selected value="">Select Modal</option>
+                <option selected value="">Select model</option>
                 <option *ngFor="let item of SelectedBrandModalForAddCars" [value]="item.id">{{item.brand_modal}}
                 </option>
               </select>
@@ -143,18 +143,14 @@
           </div>
         </div>
         <ul class="images-preview">
-          <li *ngFor="let f of careImagefiles">
+          <li *ngFor="let f of carImagefiles">
             <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" [file]="f" [removable]="true"
               (removed)="onRemoveImage(f)">
               <!-- <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label> -->
             </ngx-dropzone-image-preview>
           </li>
-          <li *ngFor="let f of carModel.images">
-            <img ngProjectAs="ngx-dropzone-preview" [src]="f">
-          </li>
         </ul>
-        <button type="submit" class="btn btn-primary" *ngIf="!carID" (click)="addCarDetails()">Add Car</button>
-        <button type="submit" class="btn btn-primary" *ngIf="carID" (click)="UpdateCar()">Update Car</button>
+        <button type="submit" class="btn btn-primary" (click)="addCarDetails()">Add Car</button>
       </div>
     </form>
   </div>
@@ -198,8 +194,9 @@
                 <label>Brand logo</label>
               </div>
               <div class="custom-file" style="display: none;">
-                <input type="file" class="custom-file-input" id="brand_logo" accept="image/png, image/gif, image/jpeg"
-                  name="image" (change)="uploadBrandPhoto($event)" #brand_logo>
+                <input type="file" class="custom-file-input" id="brand_logo" [(ngModel)]="brandModel.image"
+                  accept="image/png, image/gif, image/jpeg" name="image" (change)="uploadBrandPhoto($event)"
+                  #brand_logo>
                 <label class="custom-file-label" for="brand_logo">Choose Image</label>
               </div>
               <div class="invalid-tooltip">Enter brand name</div>
@@ -224,7 +221,7 @@
   <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add Modal</h5>
+        <h5 class="modal-title">Add model</h5>
         <button type="button" class="btn-close" #btnCloseModal data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -274,11 +271,12 @@
               </select>
             </div>
             <div class="col-12 mb-3">
-              <label for="inputPassword4" class="form-label">Select Modal</label>
+              <label for="inputPassword4" class="form-label">Select model</label>
               <select class="form-select" aria-label="Default select example" name="model_id"
                 [(ngModel)]="brandVariantModel.model_id">
-                <option selected value="">Select Modal</option>
-                <option *ngFor="let item of SelectedBrandModal" [value]="item.id">{{item.brand_modal}}</option>
+                <option selected value="">Select model</option>
+                <option *ngFor="let item of SelectedBrandModal" [value]="item.id">{{item.brand_modal}}
+                </option>
               </select>
             </div>
             <div class="col-12 mb-3">

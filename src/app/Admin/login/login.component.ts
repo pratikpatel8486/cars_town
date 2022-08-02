@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CarsService } from 'src/Shared/Services/cars.service';
+import { GlobalStateService } from 'src/Shared/Services/global-state.service';
 import { SessionStore } from 'src/Shared/Util/SessionStore';
 
 @Component({
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
 	constructor(
 		public service: CarsService,
 		private toastr: ToastrService,
+		private _GlobalStateService: GlobalStateService,
 		private router: Router
 	) { }
 
@@ -40,6 +42,7 @@ export class LoginComponent implements OnInit {
 				SessionStore.accessToken = res.token;
 				SessionStore.accessTokenType = res.type;
 				this.toastr.success(res.message, 'Success!');
+				this._GlobalStateService.notifyDataChangedDuplicate('CALLED_AS_LOG_OUT', { isDefault: true });
 				this.router.navigate(['/add-cars'])
 			} else {
 				this.toastr.error(res.message, 'Error!');

@@ -42,7 +42,10 @@
     }
     .card-image {
         width: 100%;
+        max-height: 18rem;
         display: inline-block;
+        overflow: hidden;
+        background: #ccc;
         ::ng-deep {
             > owl-carousel-o {
                 ::ng-deep {

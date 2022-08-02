@@ -6,6 +6,7 @@ export class FilterCarModel {
 	public body_type: string;
 	public brand: string;
 	public modal: string;
+	public variant: string;
 	constructor() {
 		this.registration_year = '';
 		this.kms_driven = '';
@@ -13,6 +14,7 @@ export class FilterCarModel {
 		this.body_type = '';
 		this.brand = '';
 		this.modal = '';
+		this.variant = '';
 	}
 }
 export class BrandModel {
@@ -57,7 +59,7 @@ export class CarModel {
 	public rto: string;
 	public transmission: string;
 	public insurance: string;
-	public insurance_date: string;
+	public insurance_date: any;
 	public color: string;
 	public images: any;
 	public price: any;

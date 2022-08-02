@@ -57,11 +57,11 @@ export class CommonService {
 		];
 	public filterKMSDriven: any =
 		[
-			{ value: 'Below 20k', text: 'Below 20k' },
-			{ value: '20k-50k', text: '20k-50k' },
-			{ value: '50k-70k', text: '50k-70k' },
-			{ value: '70k-100k', text: '70k-100k' },
-			{ value: 'Above 100k', text: 'Above 100k' }
+			{ value: 'Below 20km', text: 'Below 20km' },
+			{ value: '20k-50km', text: '20k-50km' },
+			{ value: '50k-70km', text: '50k-70km' },
+			{ value: '70k-100km', text: '70k-100km' },
+			{ value: 'Above 100km', text: 'Above 100km' }
 		];
 	public filterBudget: any =
 		[

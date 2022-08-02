@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Select2OptionData } from 'ng-select2';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
 import { CarsService } from 'src/Shared/Services/cars.service';
 import { CommonService } from 'src/Shared/Services/common.service';
+import { FilterCarModel } from '../model/cars.model';
 declare var $: any;
 
 @Component({
@@ -16,8 +18,10 @@ export class HomeComponent implements OnInit {
 	public body_type: Array<Select2OptionData> = [];
 	public car_modal: Array<Select2OptionData> = [];
 	public car_year: Array<Select2OptionData> = [];
+	public filterCarModel: FilterCarModel = new FilterCarModel();
 	public latestCarsDataList: any[] = [];
 	public options: any;
+	public Selectedbrand: any;
 	public brandDataList: any[] = [];
 	public brandModalDataList: any[] = [];
 	public brandVariantDataList: any[] = [];
@@ -28,6 +32,7 @@ export class HomeComponent implements OnInit {
 	public insuranceList: any[] = [];
 
 	slides = [342, 453];
+	public carsDataList: any[] = [];
 
 	slideConfig = {
 		"slidesToShow": 3,
@@ -74,11 +79,12 @@ export class HomeComponent implements OnInit {
 		},
 		nav: true
 	};
+	filterKMSDriven: any[] = [];
 
 	constructor(public service: CarsService,
 		public commonService: CommonService,
-		private toastr: ToastrService,) { }
-	
+		private toastr: ToastrService, private router: Router) { }
+
 
 	ngOnInit(): void {
 		this.getAllBrand();
@@ -89,6 +95,7 @@ export class HomeComponent implements OnInit {
 		this.RTOList = this.commonService.RTOList;
 		this.transmissionList = this.commonService.transmissionList;
 		this.insuranceList = this.commonService.insuranceList;
+		this.filterKMSDriven = this.commonService.filterKMSDriven;
 		this.getLatestCars();
 		this.getAllBrand();
 		this.body_type = [
@@ -215,5 +222,34 @@ export class HomeComponent implements OnInit {
 				}
 			})
 
+	}
+
+	public doClickCarDetails(car: any) {
+		this.router.navigate(['/carDetails', car.id])
+	}
+
+	public doApplyFilter() {
+		let brand = this.filterCarModel.brand;
+		let brand1 = this.Selectedbrand;
+
+		let modal = this.filterCarModel.modal;
+		let registration_year = this.filterCarModel.registration_year;
+		let kms = this.filterCarModel.kms_driven;
+		let budget = this.filterCarModel.budget;
+		let body_type = this.filterCarModel.body_type;
+		let variant = this.filterCarModel.variant
+		if (!brand && !modal && !registration_year && !kms && !budget && !body_type && !variant) {
+			this.toastr.warning('Please select at least 1 filter !', 'warning!');
+			return;
+		}
+		this.service.GetAllCarss(brand, modal, registration_year, kms, budget, body_type, variant).then(res => {
+			if (res.status) {
+				this.carsDataList = res.data;
+				if (this.carsDataList.length <= 0)
+					this.toastr.info("We Don't have any cars", 'Info!');
+			} else {
+				this.toastr.error(res.message, 'Error!');
+			}
+		})
 	}
 }

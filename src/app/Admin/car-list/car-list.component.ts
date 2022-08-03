@@ -6,7 +6,6 @@ import { ToastrService } from 'ngx-toastr';
 import { FilterCarModel } from 'src/app/model/cars.model';
 import { CarsService } from 'src/Shared/Services/cars.service';
 import { CommonService } from 'src/Shared/Services/common.service';
-import { SessionStore } from 'src/Shared/Util/SessionStore';
 
 declare var $: any;
 @Component({
@@ -46,13 +45,9 @@ export class CarListComponent implements OnInit {
 	};
 	public carsDataList: any[] = [];
 	constructor(public service: CarsService,
+
 		private toastr: ToastrService, public commonService: CommonService,
-		private router: Router) {
-		if (SessionStore.accessToken == null || SessionStore.accessTokenType == null) {
-			this.router.navigate(['/login',])
-			return;
-		}
-	}
+		private router: Router) { }
 
 	ngOnInit(): void {
 		this.getAllBrand();
@@ -81,18 +76,20 @@ export class CarListComponent implements OnInit {
 
 	public doClickDeleteCar(car: any) {
 		if (car.id) {
-			this.service.DeleteCars(car.id).then(res => {
-				if (res.status) {
-					// const carIndex = this.carsDataList.findIndex(i => i.id === car.id);
-					// if (carIndex != -1) {
-					// 	this.carsDataList.splice(carIndex, 1);
-					// }
-					this.toastr.success(res.message, 'Success!');
-					this.getAllCars();
-				} else {
-					this.toastr.error(res.message, 'Error!');
-				}
-			})
+			if (confirm("Are you sure to delete !!!")) {
+				this.service.DeleteCars(car.id).then(res => {
+					if (res.status) {
+						// const carIndex = this.carsDataList.findIndex(i => i.id === car.id);
+						// if (carIndex != -1) {
+						// 	this.carsDataList.splice(carIndex, 1);
+						// }
+						this.toastr.success(res.message, 'Success!');
+						this.getAllCars();
+					} else {
+						this.toastr.error(res.message, 'Error!');
+					}
+				})
+			}
 		}
 	}
 
@@ -148,12 +145,11 @@ export class CarListComponent implements OnInit {
 		let kms = this.filterCarModel.kms_driven;
 		let budget = this.filterCarModel.budget;
 		let body_type = this.filterCarModel.body_type;
-		let variant = ""
 		if (!brand && !modal && !registration_year && !kms && !budget && !body_type) {
 			this.toastr.info('Please select at least 1 filter !', 'Info!');
 			return;
 		}
-		this.service.GetAllCarss(brand, modal, registration_year, kms, budget, body_type, variant).then(res => {
+		this.service.GetAllCarss(brand, modal, registration_year, kms, budget, body_type).then(res => {
 			if (res.status) {
 				this.carsDataList = res.data;
 			} else {

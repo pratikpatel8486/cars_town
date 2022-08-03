@@ -59,6 +59,7 @@ export class CarDetailsComponent implements OnInit {
 	public transmissionList: any[] = [];
 	public insuranceList: any[] = [];
 	public latestCarsDataList: any[] = [];
+	public filterBodyTypeDataList: any[] = [];
 	constructor(private route: ActivatedRoute,
 		public service: CarsService,
 		public commonService: CommonService,
@@ -73,6 +74,7 @@ export class CarDetailsComponent implements OnInit {
 		this.RTOList = this.commonService.RTOList;
 		this.transmissionList = this.commonService.transmissionList;
 		this.insuranceList = this.commonService.insuranceList;
+		this.filterBodyTypeDataList = this.commonService.filterBodyType;
 		this.route.params.subscribe(params => {
 			this.carID = +params['id'];
 		});

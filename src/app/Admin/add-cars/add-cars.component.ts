@@ -20,15 +20,14 @@ export class AddCarsComponent implements OnInit {
 	@ViewChild('btnCloseBrandModal') btnCloseBrandModal: any;
 	@ViewChild('btnCloseModal') btnCloseModal: any;
 	@ViewChild('btnCloseVraientModal') btnCloseVraientModal: any;
-	Logo: any;
-
+	public carsDataList: any = [];
 	constructor(
 		public service: CarsService,
 		public commonService: CommonService,
 		private toastr: ToastrService,
 		private route: ActivatedRoute,
 		private http: HttpClient,
-		protected sanitizer: DomSanitizer
+		protected sanitizer: DomSanitizer,
 	) { }
 
 	public listOfYears: any[] = [];
@@ -46,12 +45,11 @@ export class AddCarsComponent implements OnInit {
 	public RTOList: any[] = [];
 	public transmissionList: any[] = [];
 	public insuranceList: any[] = [];
+	public filterBodyTypeDataList: any[] = [];
 	public carID: any;
-	SelectedBrandModal: any[] = [];
-	SelectedModal: any[] = [];
-	SelectedBrandModalForAddCars: any[] = [];
 
 	ngOnInit(): void {
+		this.getAllCars()
 		this.getAllBrand();
 		this.getAllBrandModel();
 		this.getAllBrandVariant();
@@ -61,6 +59,7 @@ export class AddCarsComponent implements OnInit {
 		this.RTOList = this.commonService.RTOList;
 		this.transmissionList = this.commonService.transmissionList;
 		this.insuranceList = this.commonService.insuranceList;
+		this.filterBodyTypeDataList = this.commonService.filterBodyType;
 		this.route.params.subscribe(params => {
 			this.carID = +params['id'];
 		});
@@ -74,9 +73,6 @@ export class AddCarsComponent implements OnInit {
 		await this.service.GetCar(this.carID).then(res => {
 			if (res.status) {
 				this.carModel = res.data;
-				this.SelectedModal = this.brandVariantDataList.filter(x => x.model_id == this.carModel.modal && x.brand_id == this.carModel.brand)
-				this.SelectedBrandModalForAddCars = this.brandModalDataList.filter(x => x.brand_id == this.carModel.brand)
-
 				this.carImagefiles = [];
 				const images: any = res.data.images || [];
 				if (images && images.length > 0) {
@@ -254,13 +250,6 @@ export class AddCarsComponent implements OnInit {
 			this.documentFileData = files[0];
 			this.brandModel.image = files[0].name;
 			// this._FileUploadService.upload(files);
-
-			let reader = new FileReader();
-
-			reader.onload = (event: any) => {
-				this.Logo = event.target.result;
-			}
-			reader.readAsDataURL(files[0]);
 		}
 	}
 
@@ -383,6 +372,20 @@ export class AddCarsComponent implements OnInit {
 			this.toastr.info('Body type is required !', 'Info!');
 			return false;
 		}
+
+		if (this.carsDataList && this.carsDataList.length > 0) {
+			const indexCar = this.carsDataList.findIndex((i: CarModel) => i.brand === this.carModel.brand
+				&& i.modal === this.carModel.modal && i.variant === this.carModel.variant
+				&& i.make_year === this.carModel.make_year && i.reg_year === this.carModel.reg_year
+				&& i.fuel_type === this.carModel.fuel_type && i.ownership === this.carModel.ownership
+				&& i.kms === this.carModel.kms && i.rto === this.carModel.rto
+				&& i.transmission === this.carModel.transmission && i.color === this.carModel.color
+			);
+			if (indexCar !== -1) {
+				this.toastr.error('Duplicate entry not allowed !', 'Info!');
+				return false;
+			}
+		}
 		return true;
 	}
 
@@ -403,11 +406,11 @@ export class AddCarsComponent implements OnInit {
 			const reader = new FileReader();
 			const binaryString = reader.readAsDataURL(blob);
 			reader.onload = (event: any) => {
-				console.log('Image in Base64: ', event.target.result);
-				// const imgArr = elementURL.split('/');
-				// const imageName = imgArr[imgArr.length - 1];
-				// const imageBlob = this.dataURItoBlob(event.target.result.toString());
-				// const imageFile = new File([imageBlob], imageName, { type: 'image/png' });
+				console.log('Image in Base64: ', event.target.result.toString());
+				const imgArr = elementURL.split('/');
+				const imageName = imgArr[imgArr.length - 1];
+				const imageBlob = this.dataURItoBlob(event.target.result);
+				const imageFile = new File([imageBlob], imageName, { type: 'image/png' });
 				observer.next(event.target.result.toString());
 				observer.complete();
 			};
@@ -421,7 +424,8 @@ export class AddCarsComponent implements OnInit {
 	}
 
 	dataURItoBlob(dataURI: any) {
-		const byteString = atob(dataURI);
+		const byteString = atob(dataURI.replace(/'/g, ""));
+		console.log('Image in Base64: ', dataURI);
 		const arrayBuffer = new ArrayBuffer(byteString.length);
 		const int8Array = new Uint8Array(arrayBuffer);
 		for (let i = 0; i < byteString.length; i++) {
@@ -430,42 +434,43 @@ export class AddCarsComponent implements OnInit {
 		const blob = new Blob([int8Array], { type: 'image/png' });
 		return blob;
 	}
+
+	// onURLinserted() {
+	// 	this.getImage(myURL).subscribe(data => {
+	// 		this.createImageFromBlob(data);
+	// 	}, error => {
+	// 		console.log("Error occured", error);
+	// 	});
+	// }
+
+	// getImage(imageUrl: string): Observable<File> {
+	// 	return this.http
+	// 		.get(imageUrl, { responseType: ResponseContentType.Blob })
+	// 		.map((res: Response) => res.blob());
+	// }
+
+	createImageFromBlob(image: Blob) {
+		let reader = new FileReader(); //you need file reader for read blob data to base64 image data.
+		reader.addEventListener("load", () => {
+			//this.imageToShow = reader.result; // here is the result you got from reader
+		}, false);
+
+		if (image) {
+			reader.readAsDataURL(image);
+		}
+	}
 	//#endregion
 
+	async getAllCars() {
+		await this.service.GetAllCarssData
+			().then(res => {
+				if (res.status) {
+					this.carsDataList = res.data || [];
+				} else {
+					this.toastr.error(res.message, 'Error!');
+				}
+			})
 
-	SelectBrand(event: any, IsFromAddCar: boolean) {
-		const brandid = event.target.value
-		if (IsFromAddCar) {
-			if (brandid == "") {
-				this.SelectedBrandModal = [];
-				return;
-			}
-			this.SelectedBrandModal = this.brandModalDataList.filter(x => x.brand_id == brandid)
-		}
-		else {
-			if (brandid == "") {
-				this.SelectedBrandModalForAddCars = [];
-				return;
-			}
-			this.SelectedBrandModalForAddCars = this.brandModalDataList.filter(x => x.brand_id == brandid)
-		}
 	}
-
-	SelectModal(event: any) {
-		const Modalid = event.target.value
-		if (Modalid == "") {
-			this.brandVariantDataList = [];
-			return;
-		}
-		this.SelectedModal = this.brandVariantDataList.filter(x => x.model_id == Modalid && x.brand_id == this.carModel.brand)
-	}
-
-	RemoveBrandImg() {
-		this.documentFileData = null
-		this.brandModel.image = '';
-		this.Logo = null
-	}
-
-
 
 }

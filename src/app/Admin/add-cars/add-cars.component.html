@@ -27,19 +27,16 @@
           <div class="row gy-2 pb-4">
             <div class="col-12 col-md-6 col-lg-4">
               <label for="inputPassword4" class="form-label">Select brand</label>
-              <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.brand" name="brand"
-                (change)="SelectBrand($event,false)">
+              <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.brand" name="brand">
                 <option selected value="">Select brand</option>
                 <option *ngFor="let item of brandDataList" [value]="item.id">{{item.brand}}</option>
               </select>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
               <label for="inputPassword4" class="form-label">Select model</label>
-              <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.modal" name="modal"
-                (change)="SelectModal($event)">
+              <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.modal" name="modal">
                 <option selected value="">Select model</option>
-                <option *ngFor="let item of SelectedBrandModalForAddCars" [value]="item.id">{{item.brand_modal}}
-                </option>
+                <option *ngFor="let item of brandModalDataList" [value]="item.id">{{item.brand_modal}}</option>
               </select>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
@@ -47,7 +44,7 @@
               <select class="form-select" aria-label="Default select example" [(ngModel)]="carModel.variant"
                 name="variant">
                 <option selected value="">Select Variant</option>
-                <option *ngFor="let item of SelectedModal" [value]="item.id">{{item.brand_variant}}</option>
+                <option *ngFor="let item of brandVariantDataList" [value]="item.id">{{item.brand_variant}}</option>
               </select>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
@@ -65,6 +62,7 @@
                 <option selected value="">Select Year</option>
                 <option *ngFor="let yl of listOfYears" [value]="yl">{{yl}}</option>
               </select>
+
             </div>
             <div class="col-12 col-md-6 col-lg-4">
               <label for="inputPassword4" class="form-label">Fuel Type</label>
@@ -84,7 +82,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
               <label class="form-label">KMS</label>
-              <input type="text" class="form-control" placeholder="10,000 km" [(ngModel)]="carModel.kms" name="kms">
+              <input type="number" class="form-control" placeholder="10,000 km" [(ngModel)]="carModel.kms" name="kms">
             </div>
             <div class="col-12 col-md-6 col-lg-4">
               <label for="inputPassword4" class="form-label">RTO</label>
@@ -123,8 +121,12 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
               <label for="inputZip" class="form-label">Body Type</label>
-              <input type="text" class="form-control" placeholder="Body Type" [(ngModel)]="carModel.body_type"
-                name="body_type">
+              <!-- <input type="text" class="form-control" placeholder="Body Type" [(ngModel)]="carModel.body_type"
+                name="body_type"> -->
+              <select id="inputState" class="form-select" [(ngModel)]="carModel.body_type" name="body_type">
+                <option selected value="">Select Body Type</option>
+                <option *ngFor="let bt of filterBodyTypeDataList" [value]="bt.value">{{bt.text}}</option>
+              </select>
             </div>
           </div>
         </div>
@@ -169,9 +171,9 @@
             <div class="col-12 mb-5">
               <div class="profile-img">
                 <span>
-                  <img [src]="Logo" accept="image/png, image/gif, image/jpeg" class=" img-fluid">
+                  <img [src]="brandModel.image" accept="image/png, image/gif, image/jpeg" class=" img-fluid">
                   <div>
-                    <button type="button" class="btn btn-danger delect_profile" (click)="RemoveBrandImg()">
+                    <button type="button" class="btn btn-danger delect_profile">
                       <svg id="delete-alt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon line"
                         width="48" height="48">
                         <path id="primary"
@@ -182,7 +184,7 @@
                     </button>
                   </div>
                 </span>
-                <a href="javascript:void(0)" (click)="brand_logo.click()" class="profile_img_btn">
+                <a href="javascript:void(0)" (change)="uploadBrandPhoto($event)" class="profile_img_btn">
                   <svg id="photo-camera" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon line"
                     width="48" height="48">
                     <path id="primary"
@@ -193,10 +195,9 @@
                 </a>
                 <label>Brand logo</label>
               </div>
-              <div class="custom-file" style="display: none;">
+              <div class="custom-file">
                 <input type="file" class="custom-file-input" id="brand_logo" [(ngModel)]="brandModel.image"
-                  accept="image/png, image/gif, image/jpeg" name="image" (change)="uploadBrandPhoto($event)"
-                  #brand_logo>
+                  accept="image/png, image/gif, image/jpeg" name="image" (change)="uploadBrandPhoto($event)">
                 <label class="custom-file-label" for="brand_logo">Choose Image</label>
               </div>
               <div class="invalid-tooltip">Enter brand name</div>
@@ -236,10 +237,10 @@
               </select>
             </div>
             <div class="col-12 mb-3">
-              <label>Modal name</label>
+              <label>Model name</label>
               <input type="text" class="form-control" placeholder="Modal name" name="brand_modal"
                 [(ngModel)]="brandModalModel.brand_modal" required>
-              <div class="invalid-tooltip">Enter modal name</div>
+              <div class="invalid-tooltip">Enter model name</div>
             </div>
           </div>
         </form>
@@ -265,7 +266,7 @@
             <div class="col-12 mb-3">
               <label for="inputPassword4" class="form-label">Select brand</label>
               <select class="form-select" aria-label="Default select example" name="brand_id"
-                [(ngModel)]="brandVariantModel.brand_id" (change)="SelectBrand($event,true)">
+                [(ngModel)]="brandVariantModel.brand_id">
                 <option selected value="">Select brand</option>
                 <option *ngFor="let item of brandDataList" [value]="item.id">{{item.brand}}</option>
               </select>
@@ -275,8 +276,7 @@
               <select class="form-select" aria-label="Default select example" name="model_id"
                 [(ngModel)]="brandVariantModel.model_id">
                 <option selected value="">Select model</option>
-                <option *ngFor="let item of SelectedBrandModal" [value]="item.id">{{item.brand_modal}}
-                </option>
+                <option *ngFor="let item of brandModalDataList" [value]="item.id">{{item.brand_modal}}</option>
               </select>
             </div>
             <div class="col-12 mb-3">
